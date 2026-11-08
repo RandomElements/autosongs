@@ -50,7 +50,7 @@ import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
-BRIDGE_VERSION = "1.4.2"
+BRIDGE_VERSION = "1.4.3"
 
 # Where the newest bridge is published. The bridge checks these on its own
 # and replaces itself, so a fix does not need the phone to install anything.
@@ -2363,6 +2363,13 @@ class Handler(BaseHTTPRequestHandler):
             self._json(403, {"error": "that code is not right"})
             return
         host, port = lan_address(), self.server.server_address[1]
+        # The scheme and the path prefix are set here as well as for
+        # /pair/info. They used to be set only when there was a public
+        # address, so on a plain network they were never set at all and
+        # claiming a code failed with "the bridge failed" - the phone
+        # could be told the bridge was there and could see its code, but
+        # it could never exchange the code for the key.
+        scheme, path_prefix = "http", ""
         if PUBLIC_URL:
             scheme, url_host, path_prefix = split_public_url(PUBLIC_URL)
             port = public_port(scheme, url_host, port)

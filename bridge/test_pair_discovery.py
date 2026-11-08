@@ -4,17 +4,19 @@ import json
 import re
 import socket
 import subprocess
+import os
 import sys
 import threading
 import time
 import urllib.error
 import urllib.request
 
-sys.path.insert(0, "/workspace/AutoSongs/bridge")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import ytbridge  # noqa: E402
 
 PORT = 8797
-BRIDGE = "/workspace/AutoSongs/bridge/ytbridge.py"
+BRIDGE = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "ytbridge.py")
 
 # --- the code itself ---------------------------------------------------------
 code = ytbridge.make_pair_code()
@@ -30,7 +32,7 @@ print("OK  the short code is eight characters and reads the same either way")
 
 # --- the bridge, running for real --------------------------------------------
 proc = subprocess.Popen(
-    [sys.executable, BRIDGE, "--port", str(PORT), "--pair", "--token", "TESTSECRET"],
+    [sys.executable, BRIDGE, "--port", str(PORT), "--pair", "--token", "A1B2C3D4E5F6"],
     stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
 time.sleep(3)
 lines = []
@@ -78,7 +80,7 @@ try:
     url = "http://127.0.0.1:%d/pair/claim?code=%s" % (PORT, shown)
     with urllib.request.urlopen(url, timeout=10) as r:
         claim = json.loads(r.read().decode("utf-8"))
-    assert claim["token"] == "TESTSECRET", claim
+    assert claim["token"] == "A1B2C3D4E5F6", claim
     print("OK  the right code hands over the key")
 
     try:
