@@ -1,7 +1,32 @@
-# The bridge core is published and its sha256 is in the release
-# feed, so the bytes have to be the same on every machine. git's
-# automatic conversion of line endings would make the working
-# tree's copy differ from the published one, and the feed's hash
-# would name whichever happened to be uploaded last.
+# Line endings, so a clone is the same everywhere.
+#
+# git's automatic conversion would give a Windows checkout CRLF and a
+# Linux checkout LF. That is fine for most source, but not for this
+# project:
+#
+#  * the shell scripts are run by bash. A CRLF shebang line makes bash
+#    say "bad interpreter: /usr/bin/env bash^M" and the script does
+#    nothing at all.
+#  * the bridge core is published and its sha256 is in the release
+#    feed, so the bytes have to be the same on every machine. git's
+#    automatic conversion would make the working tree's copy differ
+#    from the published one, and the feed's hash would name whichever
+#    happened to be uploaded last.
+#
+# So: the shell scripts and the bridge are always LF, whatever the
+# machine, and the rest of the text is LF in the repository and LF in
+# the working tree too. The Windows batch files are the exception -
+# cmd.exe wants CRLF - so they are always CRLF.
+
+* text=auto eol=lf
+
+# These must be LF everywhere: bash rejects a CRLF shebang line, and
+# the bridge's bytes are named by a hash in the release feed.
+*.sh text eol=lf
+gradlew text eol=lf
 bridge/ytbridge.py text eol=lf
 website/ytbridge.py text eol=lf
+
+# cmd.exe wants CRLF. It is the one file type that has to be the other
+# way round.
+*.cmd text eol=crlf
