@@ -1,0 +1,26 @@
+# The bridge's own tests.
+#
+# The bridge is a Python program that runs on the user's machine, so a
+# broken one is a broken app. These tests run on every push and take
+# under a minute - much cheaper than finding out from a bug report.
+name: Bridge tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install yt-dlp
+        run: pip install yt-dlp
+      - name: The cookie tests
+        run: |
+          python bridge/test_cookies.py
+          python bridge/test_cookie_http.py

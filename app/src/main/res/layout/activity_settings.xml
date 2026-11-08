@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="72dp">
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="yt-dlp bridge connection" android:textStyle="bold" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/embedded"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/bridge_inside_app" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/bridge_inside_app_hint"
+            android:textSize="12sp" android:paddingBottom="8dp" />
+
+        <EditText android:id="@+id/hostInput"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Host (127.0.0.1 or LAN IP)" android:inputType="text" />
+
+        <EditText android:id="@+id/portInput"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Port (8765)" android:inputType="number" />
+
+        <EditText android:id="@+id/tokenInput"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Auth token (optional)" android:inputType="text" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/pairing_heading"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pairing_hint"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/pairingCodeInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/pairing_code_hint"
+            android:inputType="textVisiblePassword"
+            android:textSize="13sp" />
+
+        <Button
+            android:id="@+id/pairButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pair" />
+
+        <Button
+            android:id="@+id/pairRemoteSettingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/pair_remote_bridge" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pair_remote_bridge_hint"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/save_to_heading"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/saveLocationGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/saveToPhoneRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save_to_phone" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/saveToBridgeRadio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save_to_bridge" />
+        </RadioGroup>
+
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="@string/cookies_heading" android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cookies_hint"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/cookiesStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/cookies_none"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/chooseCookiesButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/cookies_choose" />
+
+            <Button
+                android:id="@+id/removeCookiesButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/cookies_remove" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cookiesNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/cookies_remote_note"
+            android:textSize="12sp" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="24dp" android:text="@string/tools_heading" android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bridgeStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/bridge_not_tested"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/testBridgeButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/test_bridge" />
+
+            <Button
+                android:id="@+id/updateBridgeButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/update_bridge" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/termuxButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="@string/fix_termux"
+            android:visibility="gone" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:text="Detection rules" android:textStyle="bold" />
+
+        <TextView android:id="@+id/minDurationLabel"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="13sp" />
+        <SeekBar android:id="@+id/minDurationSeek"
+            android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <TextView android:id="@+id/minPlaybackLabel"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="13sp" />
+        <SeekBar android:id="@+id/minPlaybackSeek"
+            android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <TextView android:id="@+id/dedupeLabel"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="13sp" />
+        <SeekBar android:id="@+id/dedupeSeek"
+            android:layout_width="match_parent" android:layout_height="wrap_content" />
+
+        <EditText android:id="@+id/blocklistInput"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Skip artists (comma separated)" android:inputType="text" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/watchAllSwitch"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Watch every app that plays music" />
+
+        <TextView android:id="@+id/packagesHint"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:textSize="13sp" />
+
+        <Button android:id="@+id/detectAppsButton"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Show the music apps and browsers on this phone" />
+
+        <LinearLayout android:id="@+id/packagesBox"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <EditText android:id="@+id/packagesInput"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Watched packages (comma separated)" android:inputType="text" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:text="Storage" android:textStyle="bold" />
+
+        <EditText android:id="@+id/folderInput"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Folder inside Music/" android:inputType="text" />
+
+        <com.google.android.material.materialswitch.MaterialSwitch
+            android:id="@+id/deleteAfterSwitch"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Delete temporary copy after saving" />
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" android:text="@string/support_title" android:textStyle="bold" />
+
+        <Button android:id="@+id/supportButton"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/support_button" />
+
+        <Button android:id="@+id/checkUpdateButton"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="@string/check_updates" />
+
+        <Button android:id="@+id/licensesButton"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="@string/licenses_button" />
+
+        <Button android:id="@+id/testEncoderButton"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="@string/test_encoder_button" />
+
+        <TextView android:id="@+id/updateLabel"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="4dp" android:textSize="12sp" />
+
+        <EditText android:id="@+id/feedUrlInput"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="@string/feed_hint" android:inputType="textUri" />
+
+        <Button android:id="@+id/saveButton"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" android:text="Save" />
+    </LinearLayout>
+</ScrollView>

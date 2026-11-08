@@ -1,0 +1,23 @@
+# Where the Android SDK is on this machine.
+#
+# Copy this file to "local.properties" and set sdk.dir. That file is
+# ignored by git because it names a path that only exists on one machine.
+#
+# Windows, with the usual install path - note the doubled backslashes or
+# the forward slashes:
+#
+#   sdk.dir=C\:\\Users\\<you>\\AppData\\Local\\Android\\Sdk
+#   sdk.dir=C:/Users/<you>/AppData/Local/Android/Sdk
+#
+# macOS:
+#
+#   sdk.dir=/Users/<you>/Library/Android/sdk
+#
+# Linux:
+#
+#   sdk.dir=/home/<you>/Android/Sdk
+#
+# ANDROID_HOME also works for the build, but this file is what the
+# Android Gradle plugin reads.
+
+sdk.dir=

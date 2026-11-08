@@ -1,0 +1,7 @@
+# The bridge core is published and its sha256 is in the release
+# feed, so the bytes have to be the same on every machine. git's
+# automatic conversion of line endings would make the working
+# tree's copy differ from the published one, and the feed's hash
+# would name whichever happened to be uploaded last.
+bridge/ytbridge.py text eol=lf
+website/ytbridge.py text eol=lf

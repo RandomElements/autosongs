@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AutoSongs — the music you play, saved automatically</title>
+<meta name="description" content="AutoSongs for Android notices each track as it plays in YouTube Music (ReVanced) or any app you allow, and downloads it through your own local yt-dlp bridge — tagged, deduped and ready in every music app. Free, no account, no cloud.">
+<link rel="canonical" href="https://autosongs.example/">
+<meta property="og:site_name" content="AutoSongs">
+<meta property="og:type" content="website">
+<meta property="og:title" content="AutoSongs — the music you play, saved automatically">
+<meta property="og:description" content="Automatic track capture on Android, downloaded through your own local yt-dlp bridge. No account, no cloud, no server in between.">
+<meta property="og:url" content="https://autosongs.example/">
+<meta property="og:image" content="https://autosongs.example/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1330">
+<link rel="icon" href="assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script src="assets/js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo-96.png" alt="" width="38" height="38">
+      AutoSongs
+    </a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation menu"><span></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="features.html">Features</a>
+      <a href="install.html">Install</a>
+      <a href="about.html">About</a>
+      <a href="about.html#support">Support</a>
+      <a href="downloads/AutoSongs-1.4.25.apk" class="btn btn-primary btn-sm" download>Download&nbsp;v1.4.25</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="chip">v1.4.25 &middot; Android 8.0+</span>
+          <h1>The music you play, <span class="grad-text">saved automatically.</span></h1>
+          <p class="lead">
+            AutoSongs listens to the media session of YouTube Music (ReVanced) — or any
+            app you allow — notices each track as it plays, and downloads it through a
+            <strong>local yt-dlp bridge</strong> in the format you choose. It lands in
+            <code>Music/AutoSongs/</code>, tagged with title, artist, album and cover
+            art, indexed so every music player on your phone can see it.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="downloads/AutoSongs-1.4.25.apk" download>Download for Android</a>
+            <a class="btn btn-ghost" href="install.html">Set up the bridge</a>
+          </div>
+          <p class="hero-note">Free to use &middot; no account &middot; no cloud &middot; everything stays on devices you own.</p>
+        </div>
+        <div class="hero-art">
+          <img src="assets/img/logo-hero.jpg" alt="AutoSongs app icon: a teal music note and cyan-to-magenta waveform inside a gradient download-loop arrow on a dark navy background" width="480" height="480">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="tight" aria-labelledby="how-title">
+    <div class="container">
+      <h2 id="how-title">How it works</h2>
+      <div class="grid-3">
+        <div class="card reveal">
+          <h3><span class="num" aria-hidden="true">1</span> It watches</h3>
+          <p>A foreground service observes your phone's media sessions — title, artist,
+          album, artwork, playback position — with media notifications as a fallback.
+          When a new track starts, AutoSongs notices.</p>
+        </div>
+        <div class="card reveal">
+          <h3><span class="num" aria-hidden="true">2</span> It asks your bridge</h3>
+          <p>AutoSongs includes its own <code>yt-dlp</code> bridge, so nothing else is
+          required. Prefer another machine? Run the bridge on Termux, a PC, a NAS, or a
+          spare phone and choose where the files are saved.</p>
+        </div>
+        <div class="card reveal">
+          <h3><span class="num" aria-hidden="true">3</span> It files it away</h3>
+          <p>The finished file — M4A, Opus, MP3, original audio or video — is written into
+          <code>Music/AutoSongs/</code> with metadata and cover art embedded, indexed in
+          MediaStore, and remembered so it is never downloaded twice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FORMATS ============ -->
+  <section class="tight" aria-labelledby="fmt-title">
+    <div class="container">
+      <h2 id="fmt-title">Pick your format</h2>
+      <p class="lead">One choice in the app changes what every future download looks like.</p>
+      <div class="pill-row">
+        <span class="pill"><strong>M4A</strong> 256k</span>
+        <span class="pill"><strong>Opus</strong> 160k</span>
+        <span class="pill"><strong>MP3</strong> 192k on-phone / 320k bridge</span>
+        <span class="pill"><strong>Original</strong> audio, untouched</span>
+        <span class="pill"><strong>Video</strong> 720p / 1080p / 4K</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURE HIGHLIGHTS ============ -->
+  <section aria-labelledby="feat-title">
+    <div class="container">
+      <h2 id="feat-title">Built to run unattended</h2>
+      <div class="grid-3">
+        <a class="card card-link reveal" href="features.html#guardrails">
+          <h3>Guard rails</h3>
+          <p>Minimum track length, minimum seconds played before downloading, an artist
+          blocklist and a dedupe window — so ads and skipped songs never fill your storage.</p>
+        </a>
+        <a class="card card-link reveal" href="features.html#metadata">
+          <h3>Real library files</h3>
+          <p>Title, artist and album tags plus embedded cover art, written through
+          MediaStore so the files show up in every music app you own.</p>
+        </a>
+        <a class="card card-link reveal" href="features.html#bridge">
+          <h3>Your bridge, your machine</h3>
+          <p>Use the built-in bridge or run it on the phone itself via Termux, on a box at
+          home, or on a spare Android device. Pair remote options with an eight-character
+          code, or lock them down with a token.</p>
+        </a>
+        <a class="card card-link reveal" href="features.html#formats">
+          <h3>Audio and video</h3>
+          <p>From 160k Opus for storage to MP3 for compatibility (192k on-phone or
+          320k through an ffmpeg bridge), original audio for quality, or full video up to 4K.</p>
+        </a>
+        <a class="card card-link reveal" href="privacy.html">
+          <h3>Local by design</h3>
+          <p>No account and no analytics or ad SDKs in the app. Track information travels
+          only between your own devices — see the privacy page for exactly what goes where.</p>
+        </a>
+        <a class="card card-link reveal" href="install.html#troubleshooting">
+          <h3>Ready when YouTube changes</h3>
+          <p>When the site shifts, a stale <code>yt-dlp</code> is usually the cause. The
+          launchers keep <code>yt-dlp</code> current, and the app tells you when the bridge
+          is unhappy.</p>
+        </a>
+      </div>
+      <p style="margin-top:1.5rem"><a class="btn btn-ghost" href="features.html">Full feature tour →</a></p>
+    </div>
+  </section>
+
+  <!-- ============ BRIDGE PLATFORMS ============ -->
+  <section class="tight" aria-labelledby="plat-title">
+    <div class="container">
+      <h2 id="plat-title">Built in, with four more ways to run it</h2>
+      <div class="grid-2">
+        <div class="card reveal">
+          <h3>Inside AutoSongs — the default</h3>
+          <p>The downloader runs inside the app. No Python installation, Termux, pairing
+          code, or second device is needed.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Windows</h3>
+          <p>Run <code>AutoSongsBridgeSetup.exe</code>, or double-click the single-file
+          launcher <code>autosongs-bridge.cmd</code>. It prints a pairing code — type it into the app.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Linux &amp; macOS</h3>
+          <p>One file, nothing to install: <code>sh autosongs-bridge.sh</code>. Needs
+          Python&nbsp;3; it sets up <code>yt-dlp</code> for itself.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Termux on the same phone</h3>
+          <p>Run the bridge on the phone that plays the music. Host
+          <code>127.0.0.1</code>, port <code>8765</code>, no network involved.</p>
+        </div>
+        <div class="card reveal">
+          <h3>A spare Android phone</h3>
+          <p>The companion <strong>AutoSongs Bridge</strong> app turns any second phone or
+          tablet into the downloader — no PC, no Termux.</p>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem"><a class="btn btn-primary" href="install.html">Read the install guide →</a></p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section aria-labelledby="faq-title">
+    <div class="container" style="max-width:820px">
+      <h2 id="faq-title">Questions people ask</h2>
+      <details>
+        <summary>Do I need a server or an account?</summary>
+        <p>No. The default bridge runs inside AutoSongs itself. You can also put the bridge
+        in Termux, on a home computer, or on a spare Android device. AutoSongs has no user
+        accounts, and the app talks only to your chosen bridge during normal use.</p>
+      </details>
+      <details>
+        <summary>Which apps can AutoSongs watch?</summary>
+        <p>Anything that publishes a media session or media notifications on your phone.
+        It is built around YouTube Music (ReVanced), but other players work the same way —
+        you choose which ones to allow.</p>
+      </details>
+      <details>
+        <summary>Where do the files go?</summary>
+        <p>Into <code>Music/AutoSongs/</code> on your phone, written through MediaStore so
+        they appear in every music app installed on the device — not just inside AutoSongs.</p>
+      </details>
+      <details>
+        <summary>Why does a download fail with a 403?</summary>
+        <p>Almost always a stale <code>yt-dlp</code> after a YouTube change. Update it
+        (<code>pip install -U yt-dlp</code>) or re-run the launcher, which keeps it current,
+        and try again.</p>
+      </details>
+      <details>
+        <summary>Is this legal?</summary>
+        <p>AutoSongs is a tool. You are responsible for using it only on content you have
+        the right to download — your own uploads, Creative Commons or public-domain
+        material, or anything else your local law and licences permit. See the
+        <a href="about.html#rights">rights notice</a>.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-band tight">
+    <div class="container">
+      <h2 class="mt-0">Ready when you are</h2>
+      <p class="lead" style="margin-inline:auto">Two steps and about five minutes: the app on
+      your phone, the bridge on a machine you trust.</p>
+      <a class="btn btn-primary" href="downloads/AutoSongs-1.4.25.apk" download>Download AutoSongs 1.4.25</a>
+      <a class="btn btn-ghost" href="install.html">Install guide</a>
+      <p class="hero-note">AutoSongs is free and always will be. If it saves you time,
+      <a href="https://ko-fi.com/autosongs" rel="noopener">a coffee helps keep it maintained</a>.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="assets/img/logo-96.png" alt="" width="30" height="30"> AutoSongs</div>
+        <p class="footer-note">Automatic track capture on Android, downloaded through a
+        yt-dlp bridge you run yourself. Not affiliated with YouTube or Google LLC.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="install.html">Install guide</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Downloads</h2>
+        <ul>
+          <li><a href="downloads/AutoSongs-1.4.25.apk" download>AutoSongs 1.4.25 (APK)</a></li>
+          <li><a href="downloads/AutoSongsBridge-1.4.25.apk" download>Bridge app 1.4.25 (APK)</a></li>
+          <li><a href="downloads/AutoSongsBridgeSetup.exe" download>Windows bridge setup</a></li>
+          <li><a href="downloads/autosongs-bridge.cmd" download>Windows launcher (.cmd)</a></li>
+          <li><a href="downloads/autosongs-bridge.sh" download>Linux / macOS / Termux launcher (.sh)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Project</h2>
+        <ul>
+          <li><a href="version.json">Current version data</a></li>
+          <li><a href="install.html#troubleshooting">Troubleshooting</a></li>
+          <li><a href="about.html#rights">Rights &amp; responsibilities</a></li>
+          <li><a href="https://ko-fi.com/autosongs" rel="noopener">Support AutoSongs</a></li>
+          <li><a href="about.html#rights">Open source licences</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span class="year" data-year>2026</span> AutoSongs &middot; autosongs.example</span>
+      <span>Android 8.0+ &middot; v1.4.25 (build 170)</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

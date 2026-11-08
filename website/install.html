@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Install guide — AutoSongs</title>
+<meta name="description" content="Install AutoSongs on Android with its built-in yt-dlp bridge, or follow optional guides for Termux, Windows, Linux/macOS, a spare Android phone, or a manual bridge. Pairing, first run and troubleshooting.">
+<link rel="canonical" href="https://autosongs.example/install.html">
+<meta property="og:site_name" content="AutoSongs">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Install guide — AutoSongs">
+<meta property="og:description" content="Two steps: the app on your phone, the bridge on a machine you trust. Five minutes, start to finish.">
+<meta property="og:url" content="https://autosongs.example/install.html">
+<meta property="og:image" content="https://autosongs.example/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1330">
+<link rel="icon" href="assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script src="assets/js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo-96.png" alt="" width="38" height="38">
+      AutoSongs
+    </a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation menu"><span></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="install.html" aria-current="page">Install</a>
+      <a href="about.html">About</a>
+      <a href="about.html#support">Support</a>
+      <a href="downloads/AutoSongs-1.4.25.apk" class="btn btn-primary btn-sm" download>Download&nbsp;v1.4.25</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Install</span>
+      <h1>Install AutoSongs. The bridge is already inside.</h1>
+      <p class="lead">The Android app includes its <code>yt-dlp</code> bridge by default.
+      Install the APK, grant media access, and start. The optional guides below cover
+      Termux, desktop, NAS, spare-phone, and manual bridge setups.</p>
+      <nav class="toc" aria-label="On this page">
+        <a href="#requirements">Requirements</a>
+        <a href="#step-app">1 · The app</a>
+        <a href="#step-bridge">2 · Optional bridges</a>
+        <a href="#step-connect">3 · Connect</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ============ REQUIREMENTS ============ -->
+  <section class="tight" id="requirements" aria-labelledby="req-title">
+    <div class="container">
+      <h2 id="req-title">What you need</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>An Android phone or tablet</h3>
+          <p>Android 8.0 (API 26) or newer. AutoSongs targets the current SDK and keeps a
+          foreground service while watching.</p>
+        </div>
+        <div class="card">
+          <h3>A music app you allow</h3>
+          <p>Built around YouTube Music (ReVanced); anything that publishes a media
+          session or media notifications works the same way.</p>
+        </div>
+        <div class="card">
+          <h3>Nothing extra by default</h3>
+          <p>The bridge runs inside AutoSongs. Choose a remote option below only to put the
+          downloader on Termux, Windows, Linux, macOS, or a spare Android device; those
+          external options may need Python&nbsp;3.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STEP 1: APP ============ -->
+  <section class="tight" id="step-app" aria-labelledby="s1-title">
+    <div class="container" style="max-width:820px">
+      <h2 id="s1-title"><span class="num" aria-hidden="true">1</span>&nbsp; Install the app</h2>
+      <ol class="muted" style="padding-left:1.3rem">
+        <li style="margin-bottom:.6rem">Download
+          <a href="downloads/AutoSongs-1.4.25.apk" download><code>AutoSongs-1.4.25.apk</code></a>
+          to the phone (or copy it over from your computer).</li>
+        <li style="margin-bottom:.6rem">Open the file. Android will ask you to allow
+          installs from your file manager or browser — confirm once, and the install runs.</li>
+        <li>Done. The app is <code>AutoSongs</code> in your launcher and its built-in bridge
+          is enabled by default. Use the options below only to run the bridge somewhere else.</li>
+      </ol>
+      <div class="notice">
+        <strong>Sideload note.</strong> AutoSongs is distributed as a direct APK, not an
+        app-store listing. Only install it from this site's own
+        <code>downloads/</code> folder, and keep the file you downloaded — the version
+        number in the filename is the version you are running.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STEP 2: BRIDGE ============ -->
+  <section id="step-bridge" aria-labelledby="s2-title">
+    <div class="container" style="max-width:900px">
+      <h2 id="s2-title"><span class="num" aria-hidden="true">2</span>&nbsp; Optional: run the bridge somewhere else</h2>
+      <p class="lead">The built-in bridge is already enabled. Keep it and skip this step, or
+      choose one external option below and pair it with the app.</p>
+
+      <!-- Option A -->
+      <div class="card" id="option-a" style="margin-bottom:1.5rem">
+        <h3>Option A — Termux on the same phone <span class="chip">no other hardware</span></h3>
+        <p class="muted">Install <a href="https://termux.dev/">Termux</a>, then run the
+        one-file launcher inside it:</p>
+        <div class="cmd-wrap">
+        <pre class="cmd" id="cmd-termux-1"><code>pkg install python</code></pre>
+        <button class="copy-btn" type="button" data-copy-target="cmd-termux-1">Copy</button>
+        </div>
+        <div class="cmd-wrap">
+        <pre class="cmd" id="cmd-termux-2"><code>sh autosongs-bridge.sh</code></pre>
+        <button class="copy-btn" type="button" data-copy-target="cmd-termux-2">Copy</button>
+        </div>
+        <p class="muted">Get <code>autosongs-bridge.sh</code> from the
+        <a href="downloads/autosongs-bridge.sh" download>downloads folder</a> and copy it
+        into Termux first. The launcher checks for Python&nbsp;3, installs
+        <code>yt-dlp</code> if needed, starts the bridge on port 8765 and prints an
+        eight-character code.</p>
+        <p class="mb-0">In the app's Settings use host <code>127.0.0.1</code>, port
+        <code>8765</code> — the traffic never leaves the phone.</p>
+      </div>
+
+      <!-- Option B -->
+      <div class="card" id="option-b" style="margin-bottom:1.5rem">
+        <h3>Option B — Windows PC</h3>
+        <p class="muted">Two ways, same result:</p>
+        <ul class="checks">
+          <li><strong>Setup installer</strong> — run
+            <a href="downloads/AutoSongsBridgeSetup.exe" download><code>AutoSongsBridgeSetup.exe</code></a>
+            and the bridge is installed and started for you.</li>
+          <li><strong>Single-file launcher</strong> — double-click
+            <a href="downloads/autosongs-bridge.cmd" download><code>autosongs-bridge.cmd</code></a>
+            (or run it from a prompt). Nothing to install.</li>
+        </ul>
+        <p class="mb-0 muted">Both need Python&nbsp;3 (the launcher tells you how to get it
+        with <code>winget install Python.Python.3</code>), put the bridge into
+        <code>%USERPROFILE%\.autosongs\</code>, keep <code>yt-dlp</code> current, and print
+        an eight-character pairing code.</p>
+      </div>
+
+      <!-- Option C -->
+      <div class="card" id="option-c" style="margin-bottom:1.5rem">
+        <h3>Option C — Linux, macOS or a NAS</h3>
+        <p class="muted">One file, nothing to install:</p>
+        <div class="cmd-wrap">
+        <pre class="cmd" id="cmd-sh"><code>sh autosongs-bridge.sh</code></pre>
+        <button class="copy-btn" type="button" data-copy-target="cmd-sh">Copy</button>
+        </div>
+        <p class="mb-0 muted">Download <a href="downloads/autosongs-bridge.sh" download>autosongs-bridge.sh</a>,
+        run it, and it checks for Python&nbsp;3, installs <code>yt-dlp</code> if needed,
+        fetches the bridge into <code>~/.autosongs/</code>, starts it, and prints the
+        eight-character code. Keep it running in a terminal, <code>tmux</code> or
+        <code>systemd</code>.</p>
+      </div>
+
+      <!-- Option D -->
+      <div class="card" id="option-d" style="margin-bottom:1.5rem">
+        <h3>Option D — a spare Android phone</h3>
+        <p class="muted">Install the companion
+          <a href="downloads/AutoSongsBridge-1.4.25.apk" download><code>AutoSongsBridge-1.4.25.apk</code></a>
+          on any second phone or tablet and it becomes the download box — no PC, no
+          Termux. Open it, keep it on the same network, and type the code it shows into
+          AutoSongs.</p>
+      </div>
+
+      <!-- Option E -->
+      <div class="card" id="option-e">
+        <h3>Option E — run the bridge yourself</h3>
+        <p class="muted">Already have a machine you trust? Download the single-file
+        <a href="ytbridge.py" download><code>ytbridge.py</code></a> bridge and run it directly:</p>
+        <div class="cmd-wrap">
+        <pre class="cmd" id="cmd-manual"><code>python3 ytbridge.py --host 0.0.0.0 --port 8765 --token "your-secret"</code></pre>
+        <button class="copy-btn" type="button" data-copy-target="cmd-manual">Copy</button>
+        </div>
+        <p class="mb-0 muted">It binds <code>0.0.0.0</code> by default so LAN hosts work.
+        If the machine could be reachable from anywhere but your own network, set a token
+        or keep it behind a firewall — the app sends that token with every request.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STEP 3: CONNECT ============ -->
+  <section class="tight" id="step-connect" aria-labelledby="s3-title">
+    <div class="container" style="max-width:820px">
+      <h2 id="s3-title"><span class="num" aria-hidden="true">3</span>&nbsp; Connect and start</h2>
+      <ol class="muted" style="padding-left:1.3rem">
+        <li style="margin-bottom:.6rem">Open AutoSongs and tap
+          <strong>Grant notification access</strong> — enable AutoSongs in the system list.
+          This is how the app sees the track that is playing.</li>
+        <li style="margin-bottom:.6rem">For the default, leave <strong>Bridge inside the app</strong>
+          enabled in <strong>Settings</strong>. For Termux, Windows, Linux, macOS, or a spare
+          phone, turn that switch off and use <strong>Pair remote bridge</strong> with the
+          eight-character code. You can also enter the LAN host, port <code>8765</code>,
+          and token manually.</li>
+        <li style="margin-bottom:.6rem">Back on the main screen, pick a
+          <strong>Download format</strong> and tap <strong>Test bridge</strong>. You should
+          see <code>Bridge OK — yt-dlp &lt;version&gt;</code>.</li>
+        <li>Tap <strong>Start watching</strong>. From now on, every new song you play is
+          downloaded automatically into <code>Music/AutoSongs/</code>.</li>
+      </ol>
+      <div class="notice" style="margin-top:1.5rem">
+        <strong>One battery setting matters.</strong> Exclude AutoSongs from battery
+        optimisation and allow background activity, or Android may kill the watcher in the
+        middle of a session.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TROUBLESHOOTING ============ -->
+  <section class="tight" id="troubleshooting" aria-labelledby="ts-title">
+    <div class="container" style="max-width:820px">
+      <h2 id="ts-title">Troubleshooting</h2>
+      <details>
+        <summary>Test bridge fails with a connection error</summary>
+        <p>Check the bridge is actually running, then the host and port in Settings
+        (<code>127.0.0.1</code> only works for Termux on the phone itself; a PC bridge needs
+        its LAN IP, e.g. <code>192.168.1.40</code>). Phone and machine must be on the same
+        network, and the machine's firewall must allow port 8765 from the LAN.</p>
+      </details>
+      <details>
+        <summary>Downloads fail with “HTTP Error 403: Forbidden”</summary>
+        <p>A stale <code>yt-dlp</code> after a YouTube change — the usual cause. Update it:
+        <code>pip install -U yt-dlp</code>, or simply re-run the launcher, which keeps the
+        engine current. No app update is needed.</p>
+      </details>
+      <details>
+        <summary>Some tracks never download</summary>
+        <p>Check the guard rails: minimum track length, minimum playback seconds and the
+        artist blocklist all skip tracks on purpose. Widen them, then watch the app's status
+        area to see what it detected.</p>
+      </details>
+      <details>
+        <summary>It stops after a while in the background</summary>
+        <p>Battery optimisation. Exclude AutoSongs from it, allow background activity, and
+        keep the notification access enabled. Aggressive OEM battery managers are the most
+        common culprit.</p>
+      </details>
+      <details>
+        <summary>The same song downloads again after a loop</summary>
+        <p>Increase the dedupe window (“skip re-downloading within N hours”) in Settings.</p>
+      </details>
+      <details>
+        <summary>Is the bridge safe on my network?</summary>
+        <p>By default it listens on all interfaces so LAN boxes work. On anything but a
+        trusted network, set <code>--token</code> (or use the launcher's pairing code) and
+        keep the machine behind your firewall. See the <a href="privacy.html">privacy page</a>
+        for what data crosses the wire.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="cta-band tight">
+    <div class="container">
+      <h2 class="mt-0">Everything in one place</h2>
+      <div class="pill-row" style="justify-content:center; margin-top:1rem">
+        <a class="btn btn-primary" href="downloads/AutoSongs-1.4.25.apk" download>AutoSongs 1.4.25 (APK)</a>
+        <a class="btn btn-ghost" href="downloads/AutoSongsBridge-1.4.25.apk" download>Bridge app (APK)</a>
+        <a class="btn btn-ghost" href="downloads/AutoSongsBridgeSetup.exe" download>Windows setup</a>
+        <a class="btn btn-ghost" href="downloads/autosongs-bridge.cmd" download>Windows launcher</a>
+        <a class="btn btn-ghost" href="downloads/autosongs-bridge.sh" download>Linux / macOS launcher</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="assets/img/logo-96.png" alt="" width="30" height="30"> AutoSongs</div>
+        <p class="footer-note">Automatic track capture on Android, downloaded through a
+        yt-dlp bridge you run yourself. Not affiliated with YouTube or Google LLC.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="install.html">Install guide</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Downloads</h2>
+        <ul>
+          <li><a href="downloads/AutoSongs-1.4.25.apk" download>AutoSongs 1.4.25 (APK)</a></li>
+          <li><a href="downloads/AutoSongsBridge-1.4.25.apk" download>Bridge app 1.4.25 (APK)</a></li>
+          <li><a href="downloads/AutoSongsBridgeSetup.exe" download>Windows bridge setup</a></li>
+          <li><a href="downloads/autosongs-bridge.cmd" download>Windows launcher (.cmd)</a></li>
+          <li><a href="downloads/autosongs-bridge.sh" download>Linux / macOS / Termux launcher (.sh)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Project</h2>
+        <ul>
+          <li><a href="version.json">Current version data</a></li>
+          <li><a href="install.html#troubleshooting">Troubleshooting</a></li>
+          <li><a href="about.html#rights">Rights &amp; responsibilities</a></li>
+          <li><a href="https://ko-fi.com/autosongs" rel="noopener">Support AutoSongs</a></li>
+          <li><a href="about.html#rights">Open source licences</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span class="year" data-year>2026</span> AutoSongs &middot; autosongs.example</span>
+      <span>Android 8.0+ &middot; v1.4.25 (build 170)</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

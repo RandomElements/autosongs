@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — AutoSongs</title>
+<meta name="description" content="Exactly what AutoSongs sees, where it sends it, and where it doesn't: local-first design, no accounts, no analytics, no ad SDKs, bridge data flow, permissions explained and third-party software.">
+<link rel="canonical" href="https://autosongs.example/privacy.html">
+<meta property="og:site_name" content="AutoSongs">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacy — AutoSongs">
+<meta property="og:description" content="AutoSongs runs on devices you own and talks to the bridge you run. Here is the full data flow, in plain words.">
+<meta property="og:url" content="https://autosongs.example/privacy.html">
+<meta property="og:image" content="https://autosongs.example/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1330">
+<link rel="icon" href="assets/img/favicon.ico">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="assets/css/styles.css">
+<script src="assets/js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo-96.png" alt="" width="38" height="38">
+      AutoSongs
+    </a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle navigation menu"><span></span></button>
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="install.html">Install</a>
+      <a href="about.html">About</a>
+      <a href="about.html#support">Support</a>
+      <a href="downloads/AutoSongs-1.4.25.apk" class="btn btn-primary btn-sm" download>Download&nbsp;v1.4.25</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container" style="max-width:820px">
+      <span class="eyebrow">Privacy</span>
+      <h1>Local by design — in plain words</h1>
+      <p class="lead">AutoSongs has no accounts, no analytics SDK, no ad SDK, and no server
+      of ours in the data path. Everything happens on devices you own. This page spells out
+      exactly what that means, because “trust me” is not a privacy policy.</p>
+    </div>
+  </section>
+
+  <section class="tight" aria-labelledby="flow-title">
+    <div class="container" style="max-width:820px">
+      <h2 id="flow-title">What the app sees, and where it goes</h2>
+      <div class="table-wrap">
+        <table>
+          <caption class="muted small" style="padding:.6rem 1rem; text-align:left">Data flow of the AutoSongs app</caption>
+          <thead>
+            <tr><th scope="col">Data</th><th scope="col">Why it is read</th><th scope="col">Where it goes</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Track title, artist, album, artwork, playback position</td>
+              <td>That is the product: knowing what is playing so it can be saved.</td>
+              <td>Your bridge only — a machine you run. Never to us.</td>
+            </tr>
+            <tr>
+              <td>Media notifications</td>
+              <td>Fallback detection for apps that don't expose a full media session.</td>
+              <td>Stay on the phone; only the resulting title/artist pair is sent to your bridge.</td>
+            </tr>
+            <tr>
+              <td>Your settings (host, port, token, format, rules)</td>
+              <td>Configuration you chose.</td>
+              <td>Stored locally in the app's own preferences.</td>
+            </tr>
+            <tr>
+              <td>The downloaded files</td>
+              <td>The point of it all.</td>
+              <td><code>Music/AutoSongs/</code> on your phone, indexed in MediaStore.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted">When your bridge fetches a track, <em>it</em> talks to YouTube on
+      your behalf — that traffic is between your bridge machine and YouTube, exactly as if
+      you had run <code>yt-dlp</code> yourself. No AutoSongs-operated server is involved in
+      detection, downloading or storage.</p>
+    </div>
+  </section>
+
+  <section class="tight" aria-labelledby="perm-title">
+    <div class="container" style="max-width:820px">
+      <h2 id="perm-title">Permissions, one by one</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Notification access</h3>
+          <p>Android's way of letting an app observe other apps' media sessions and media
+          notifications. Without it there is no detection. You grant it explicitly in
+          system settings, and you can revoke it the same way.</p>
+        </div>
+        <div class="card">
+          <h3>Internet &amp; network state</h3>
+          <p>To talk to your bridge over HTTP — on your phone (Termux) or your local
+          network. The app uses plain HTTP to the bridge you configure, which is why it
+          accepts cleartext traffic on your LAN.</p>
+        </div>
+        <div class="card">
+          <h3>Foreground service &amp; wake lock</h3>
+          <p>Keeps the watcher alive while you listen, with a visible notification. No
+          hidden background process.</p>
+        </div>
+        <div class="card">
+          <h3>Storage (Android 9 and older)</h3>
+          <p>Writing music files on Android 10+ goes through MediaStore and needs no
+          storage permission. On Android 8–9 the app asks for storage access to write
+          <code>Music/AutoSongs/</code>.</p>
+        </div>
+        <div class="card">
+          <h3>Notifications (Android 13+)</h3>
+          <p>For the watcher's own status notification, so you always know it is running.</p>
+        </div>
+        <div class="card">
+          <h3>Battery optimisation exemption</h3>
+          <p>Offered, never forced: without it Android may kill the watcher mid-session.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tight" aria-labelledby="bridge-net-title">
+    <div class="container" style="max-width:820px">
+      <h2 id="bridge-net-title">The bridge, honestly</h2>
+      <ul class="checks" style="max-width:60rem">
+        <li><strong>It binds 0.0.0.0 by default</strong> so a LAN box works. On any network
+        you don't trust, set <code>--token</code> or keep it behind a firewall.</li>
+        <li><strong>The launcher scripts fetch the bridge program</strong> from the
+        AutoSongs project's own server when it is missing or outdated
+        (<code>~/.autosongs/</code> or <code>%USERPROFILE%\.autosongs\</code>). That
+        download is the only traffic between your machine and us, and it happens only when
+        you run the launcher.</li>
+        <li><strong>Downloads happen through yt-dlp</strong> from your bridge machine, so
+        YouTube sees requests from your network — the same as any yt-dlp use.</li>
+        <li><strong>Tokens and pairing codes are shared secrets</strong> between your app
+        and your bridge. They never leave that pair.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="tight" aria-labelledby="no-title">
+    <div class="container" style="max-width:820px">
+      <h2 id="no-title">What does not happen</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>No collection</h3>
+          <p>No accounts, no profiles, no telemetry, no analytics or ad libraries in the
+          app, no crash reporting to us, no email list. The website itself is static files —
+          it sets no cookies and runs no trackers; your browser simply fetches pages.</p>
+        </div>
+        <div class="card">
+          <h3>No lock-in</h3>
+          <p>Your library is a plain folder of ordinary media files. Delete the app, move
+          the folder, keep the music — nothing is encrypted away or tied to us.</p>
+        </div>
+      </div>
+      <div class="notice" style="margin-top:1.5rem">
+        <strong>Children and COPPA.</strong> AutoSongs collects no personal information from
+        anyone, by design — there is nothing to delete and no data to hand over. It is a
+        general-purpose tool, not a service directed at children.
+      </div>
+    </div>
+  </section>
+
+  <section class="tight" aria-labelledby="third-title">
+    <div class="container" style="max-width:820px">
+      <h2 id="third-title">Third-party software</h2>
+      <p class="muted">AutoSongs orchestrates open tools that have their own behaviour and
+      policies: <code>yt-dlp</code> (which contacts YouTube), <code>ffmpeg</code> (encoding),
+      and on Android, Google's MediaStore for library indexing. Their terms and privacy
+      practices apply to their parts of the job. Changes to this page will appear here with
+      the site's next deploy.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand"><img src="assets/img/logo-96.png" alt="" width="30" height="30"> AutoSongs</div>
+        <p class="footer-note">Automatic track capture on Android, downloaded through a
+        yt-dlp bridge you run yourself. Not affiliated with YouTube or Google LLC.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="install.html">Install guide</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Downloads</h2>
+        <ul>
+          <li><a href="downloads/AutoSongs-1.4.25.apk" download>AutoSongs 1.4.25 (APK)</a></li>
+          <li><a href="downloads/AutoSongsBridge-1.4.25.apk" download>Bridge app 1.4.25 (APK)</a></li>
+          <li><a href="downloads/AutoSongsBridgeSetup.exe" download>Windows bridge setup</a></li>
+          <li><a href="downloads/autosongs-bridge.cmd" download>Windows launcher (.cmd)</a></li>
+          <li><a href="downloads/autosongs-bridge.sh" download>Linux / macOS / Termux launcher (.sh)</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Project</h2>
+        <ul>
+          <li><a href="version.json">Current version data</a></li>
+          <li><a href="install.html#troubleshooting">Troubleshooting</a></li>
+          <li><a href="about.html#rights">Rights &amp; responsibilities</a></li>
+          <li><a href="https://ko-fi.com/autosongs" rel="noopener">Support AutoSongs</a></li>
+          <li><a href="about.html#rights">Open source licences</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span class="year" data-year>2026</span> AutoSongs &middot; autosongs.example</span>
+      <span>Android 8.0+ &middot; v1.4.25 (build 170)</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

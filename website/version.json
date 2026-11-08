@@ -1,0 +1,24 @@
+{
+  "versionName": "1.4.25",
+  "versionCode": 170,
+  "sha256": "bcd123064fc4ccd2a4688464a36d649dc0f75f3e2a72deff7cd2c9c3ab2a758f",
+  "sizeBytes": 55801734,
+  "apkUrl": "https://autosongs.example/downloads/AutoSongs-1.4.25.apk",
+  "bridgeApkUrl": "https://autosongs.example/downloads/AutoSongsBridge-1.4.25.apk",
+  "bridgeSha256": "f45995be94f8e43912894e4b22ede88b47c8d5d0a4e1d229191a4df2baa4d7ef",
+  "bridgeSizeBytes": 55449762,
+  "bridgeSetupExeUrl": "https://autosongs.example/downloads/AutoSongsBridgeSetup.exe",
+  "bridgeSetupExeSha256": "9542d64260f1ad1c33f49dbf81bf115359887a518fbe4d244b17df5668a44b78",
+  "bridgeSetupExeSizeBytes": 85443923,
+  "bridgeShUrl": "https://autosongs.example/downloads/autosongs-bridge.sh",
+  "bridgeCmdUrl": "https://autosongs.example/downloads/autosongs-bridge.cmd",
+  "bridgeCoreVersion": "1.4.2",
+  "bridgeCoreUrl": "https://autosongs.example/ytbridge.py",
+  "bridgeCoreSha256": "deb5bcc7e6326af3853974a4c4d4294444a0db626f5514c869aecb5e443db10f",
+  "bridgeCoreSizeBytes": 106596,
+  "notes": "The bridge now explains what went wrong when a tunnel cannot be made, instead of saying only that it stopped.",
+  "published": "2026-11-08T11:52:36Z",
+  "hosts": [
+    "https://autosongs.example"
+  ]
+}

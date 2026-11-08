@@ -1,0 +1,38 @@
+name: Something is not working
+description: Tell me what happened and I will fix it.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you did, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: phone
+    attributes:
+      label: Phone and app version
+      description: The phone's model and Android version, and the AutoSongs version from Settings.
+    validations:
+      required: true
+  - type: dropdown
+    id: bridge
+    attributes:
+      label: Which bridge were you using?
+      options:
+        - The one inside the app
+        - Termux on the same phone
+        - A PC or NAS on my network
+        - The AutoSongs Bridge app on another device
+        - The desktop launcher
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: The bridge's log
+      description: >
+        If the bridge was not the one inside the app, paste the last lines
+        of its log. On the desktop bridge it is next to the app; in Termux
+        it is in ~/.autosongs/bridge.log.

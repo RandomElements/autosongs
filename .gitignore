@@ -1,0 +1,37 @@
+# Build output
+build/
+.gradle/
+.kotlin/
+*.apk
+*.aab
+*.imy
+*.pyc
+__pycache__/
+*.log
+
+# The release signing key and its passwords. These never belong in a
+# repository: anyone holding the key could sign an "update" to the app.
+keystore/
+*.jks
+*.keystore
+keystore.properties
+
+# This machine's Android SDK path.
+local.properties
+
+# The origin server's private keys.
+*.ppk
+id_rsa*
+*.pem
+
+# The website's built artifacts. They are hundreds of megabytes of
+# binaries, and they are produced by a release build rather than kept
+# in source.
+website/downloads/*
+!website/downloads/.gitkeep
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

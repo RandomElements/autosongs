@@ -1,0 +1,15 @@
+# Every address a release has been published to, newest first.
+#
+# There is exactly one address, and it is AutoSongs' own site:
+#
+#     https://autosongs.example
+#
+# The old throwaway host names and the retired platform mirrors are gone
+# from every list in this project. The site carries everything: the app's
+# release feed (version.json), the bridge core (ytbridge.py), the Termux
+# installer (install-termux.sh and setup-termux.sh), the stop helper
+# (bridge-stop.sh) and the downloads folder.
+#
+# Only addresses that answer are listed: a dead one makes the app's
+# update check wait for its timeout before it moves on.
+https://autosongs.example

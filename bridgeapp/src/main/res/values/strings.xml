@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AutoSongs Bridge</string>
+    <string name="tagline">Keeps the songs on this phone. Run it here, and the phone you use can find it and save to it.</string>
+    <string name="code_heading">Type this code on the other phone</string>
+    <string name="copy_the_code">Copy the code</string>
+    <string name="new_code">New code</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="not_running">not running</string>
+    <string name="bridge_running">The bridge is running</string>
+    <string name="bridge_stopped">The bridge is stopped</string>
+    <string name="bridge_failed">The bridge could not start: %1$s</string>
+    <string name="bridge_starting">Starting the bridge</string>
+    <string name="bridge_starting_detail">Getting Python ready</string>
+    <string name="bridge_code_in_notification">Code %1$s</string>
+    <string name="bridge_channel">The bridge</string>
+    <string name="bridge_version">bridge %1$s · yt-dlp %2$s</string>
+    <string name="how_to_pair">Pairing with it</string>
+    <string name="how_to_pair_detail">1. Start the bridge here.\n2. On the phone you use, open AutoSongs and press Pair remote bridge.\n3. Type the code above. The phone finds this bridge by itself and sets up the address.\n\nThen, in that app\'s Settings, choose Download to the bridge.</string>
+    <string name="keep_it_running">Keep it running</string>
+    <string name="keep_it_running_detail">Android closes apps that sit in the background. Give this one an exemption and the bridge stays up.</string>
+    <string name="allow_in_the_background">Allow it in the background</string>
+    <string name="battery_already_ok">This app is already allowed to run in the background</string>
+    <string name="battery_could_not_open">Could not open the settings page</string>
+    <string name="where_the_songs_go">Where the songs go</string>
+    <string name="library_where">Songs are put in %1$s and then moved into this phone\'s Music folder, under AutoSongs.</string>
+    <string name="copied">Copied</string>
+    <string name="new_code_made">A new code was made</string>
+    <string name="notification_needed">Allow notifications, so the bridge can show its code and keep running in the background.</string>
+</resources>
