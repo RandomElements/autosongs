@@ -22,6 +22,7 @@ import urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import ytbridge  # noqa: E402
+from testhelpers import stub_on_path
 
 
 def free_port():
@@ -117,21 +118,15 @@ def main():
         with open(state, "w") as fh:
             fh.write("2026.06.09-stub\n")
 
-        stub = os.path.join(bindir, "yt-dlp")
-        with open(stub, "w") as fh:
-            fh.write(STUB_YTDLP)
-        os.chmod(stub, 0o755)
-
-        stub_pip = os.path.join(bindir, "pip")
-        with open(stub_pip, "w") as fh:
-            fh.write(STUB_PIP)
-        os.chmod(stub_pip, 0o755)
+        stub = stub_on_path(bindir, "yt-dlp", STUB_YTDLP)
+        stub_pip = stub_on_path(bindir, "pip", STUB_PIP)
 
         # "python -m pip" is tried first, so python -m pip must also work.
-        stub_python = os.path.join(bindir, "python")
-        with open(stub_python, "w") as fh:
-            fh.write('#!/usr/bin/env bash\nexec "%s/pip" "$@"\n' % bindir)
-        os.chmod(stub_python, 0o755)
+        # The pip fake is named relative to this script, so it is found
+        # on every platform - a Windows path would not be.
+        stub_python = stub_on_path(
+            bindir, "python",
+            '#!/usr/bin/env bash\nexec "$(dirname "$0")/pip.sh" "$@"\n')
 
         cand = os.path.join(tmp, "candidates.jsonl")
         with open(cand, "w") as fh:

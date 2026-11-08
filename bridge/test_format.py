@@ -14,6 +14,7 @@ import sys
 import tempfile
 import time
 import urllib.request
+from testhelpers import stub_on_path
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BRIDGE = os.path.join(HERE, "ytbridge.py")
@@ -100,10 +101,7 @@ def main():
     os.makedirs(work, exist_ok=True)
     port = free_port()
 
-    stub = os.path.join(tmp, "yt-dlp")
-    with open(stub, "w") as fh:
-        fh.write(STUB)
-    os.chmod(stub, 0o755)
+    stub = stub_on_path(tmp, "yt-dlp", STUB)
 
     cand = os.path.join(tmp, "candidates.jsonl")
     with open(cand, "w") as fh:

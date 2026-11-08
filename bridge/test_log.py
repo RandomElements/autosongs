@@ -14,6 +14,7 @@ import tempfile
 import time
 import urllib.error
 import urllib.request
+from testhelpers import stub_on_path
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -75,10 +76,7 @@ def main():
     try:
         bindir = os.path.join(tmp, "bin")
         os.makedirs(bindir)
-        stub = os.path.join(bindir, "yt-dlp")
-        with open(stub, "w") as fh:
-            fh.write(STUB)
-        os.chmod(stub, 0o755)
+        stub = stub_on_path(bindir, "yt-dlp", STUB)
 
         cand = os.path.join(tmp, "candidates.jsonl")
         with open(cand, "w") as fh:
