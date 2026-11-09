@@ -53,7 +53,7 @@ import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
-BRIDGE_VERSION = "1.4.4"
+BRIDGE_VERSION = "1.4.6"
 
 # Where the newest bridge is published. The bridge checks these on its own
 # and replaces itself, so a fix does not need the phone to install anything.
@@ -1454,6 +1454,29 @@ def build_download_args(preset, video_quality, embed_metadata, embed_thumbnail,
     return args
 
 
+def atomic_parsley():
+    """Whether AtomicParsley is here, which is what mp4 and m4a need.
+
+    yt-dlp can put a cover into an mp3, an ogg, an opus or a flac by itself,
+    but a cover in mp4 or m4a needs AtomicParsley. Without it yt-dlp does
+    not merely skip the cover - it fails the whole download with
+    "supported filetypes for thumbnail embedding are ...", so the flag has
+    to be left off when it cannot be honoured.
+    """
+    return bool(shutil.which("AtomicParsley") or shutil.which("AtomicParsley.exe"))
+
+
+def can_embed_thumbnail(preset):
+    """Whether a cover can actually be put into this preset's file."""
+    if preset in ("audio_mp3", "audio_opus"):
+        return True
+    if preset == "audio_m4a" or preset.startswith("video_"):
+        return atomic_parsley()
+    # audio_original keeps whatever container the source used, and that is
+    # not known until the file lands - so the cover is not promised.
+    return False
+
+
 def _build_download_args(preset, video_quality, embed_metadata, embed_thumbnail):
     common = ["--no-playlist", "--no-part", "--newline", "--no-warnings",
               "--no-cache-dir"]
@@ -1473,7 +1496,7 @@ def _build_download_args(preset, video_quality, embed_metadata, embed_thumbnail)
         # instead of being muxed into one file, so it is not used for video.
         common = [c for c in common if c != "--no-part"]
         common += ["-f", fmt, "--merge-output-format", "mp4"]
-        if embed_thumbnail:
+        if embed_thumbnail and can_embed_thumbnail(preset):
             common += ["--embed-thumbnail"]
         if embed_metadata:
             common += ["--embed-metadata"]
@@ -1500,7 +1523,7 @@ def _build_download_args(preset, video_quality, embed_metadata, embed_thumbnail)
     else:  # audio_original
         common += ["-f", "bestaudio[vcodec=none]/bestaudio"]
 
-    if embed_thumbnail:
+    if embed_thumbnail and can_embed_thumbnail(preset):
         common += ["--embed-thumbnail"]
     if embed_metadata:
         common += ["--embed-metadata"]
@@ -2369,7 +2392,12 @@ class BridgeServer(ThreadingHTTPServer):
     """Threading server that stays quiet when a client hangs up."""
 
     daemon_threads = True
-    allow_reuse_address = True
+    # Windows treats SO_REUSEADDR as "let anyone else bind this port too", so
+    # a second copy of the bridge would bind the same port silently and the
+    # two would take turns answering - half the requests die with no reply,
+    # which looks exactly like a broken tunnel. Refusing the second bind is
+    # the honest behaviour: it says "already running" instead.
+    allow_reuse_address = os.name != "nt"
 
     def handle_error(self, request, client_address):
         exc = sys.exc_info()[1]
@@ -2750,7 +2778,14 @@ def make_server(host="127.0.0.1", port=8765, workdir="", embedded=False,
     COOKIES = CookieSource(path, source)
     os.makedirs(WORKDIR, exist_ok=True)
 
-    server = BridgeServer((host, int(port)), Handler)
+    try:
+        server = BridgeServer((host, int(port)), Handler)
+    except OSError as exc:
+        print("[bridge] cannot use port %d: %s" % (int(port), exc), flush=True)
+        print("[bridge] another copy of the bridge is probably already "
+              "running. Close it first, or start this one on a different "
+              "port with --port.", flush=True)
+        raise SystemExit(2)
     print("[bridge] yt-dlp bridge listening on %s:%d" % (host, port), flush=True)
     if PUBLIC_URL:
         print("[bridge] reachable from outside at: %s" % PUBLIC_URL, flush=True)

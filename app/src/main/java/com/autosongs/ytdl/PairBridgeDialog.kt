@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.autosongs.ytdl.bridge.BridgeDiscovery
+import com.autosongs.ytdl.bridge.BridgeClient
 import com.autosongs.ytdl.bridge.BridgeVersion
 import com.autosongs.ytdl.bridge.OnlinePairing
 import com.autosongs.ytdl.bridge.PairCode
@@ -81,10 +82,27 @@ object PairBridgeDialog {
                         settings.bridgeScheme = online.scheme
                         settings.bridgePath = online.path
                         settings.bridgeMode = AppSettings.BRIDGE_REMOTE
-                        val said = activity.getString(R.string.paired_with, online.host)
+                        // Paired is not the same as working: the address
+                        // may be right and the key may not be, which is what
+                        // an expired code or a second pairing looks like. So
+                        // the bridge is asked once, now, and the answer is
+                        // shown instead of "paired" leading to a failure on
+                        // the next screen.
+                        status.text = activity.getString(R.string.checking_the_bridge)
+                        val verdict = BridgeClient(
+                            online.host, online.port, online.token, online.scheme, online.path
+                        ).health("")
+                        val said = if (verdict.isSuccess) {
+                            activity.getString(R.string.paired_with, online.host)
+                        } else {
+                            activity.getString(
+                                R.string.paired_but_unreachable,
+                                verdict.exceptionOrNull()?.message ?: ""
+                            )
+                        }
                         status.text = said
                         Toast.makeText(activity, said, Toast.LENGTH_LONG).show()
-                        dialog.dismiss()
+                        if (verdict.isSuccess) dialog.dismiss()
                         return@launch
                     }
                     val found = BridgeDiscovery.find(code)

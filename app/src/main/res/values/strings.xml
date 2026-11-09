@@ -107,4 +107,8 @@
     <string name="setup_counter">Step %1$d of %2$d</string>
     <string name="setup_could_not_open">Could not open that settings page</string>
     <string name="setup_finished">AutoSongs is watching for new tracks</string>
+    <string name="checking_the_bridge">Checking the bridge…</string>
+    <string name="paired_but_unreachable">Pairing was saved, but the bridge did not answer: %1$s
+
+If this says unauthorized, the key does not match the bridge — pair again with the characters it is showing now.</string>
 </resources>

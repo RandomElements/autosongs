@@ -1,27 +1,1218 @@
-{
-  "versionName": "1.4.28",
-  "versionCode": 173,
-  "sha256": "7e800c4b6f38dea611d71ea1ab5454bff729983e8e23325e31f85193b1928fec",
-  "sizeBytes": 55821790,
-  "apkUrl": "https://autosongs.example/downloads/AutoSongs-1.4.28.apk",
-  "bridgeApkUrl": "https://autosongs.example/downloads/AutoSongsBridge-1.4.26.apk",
-  "bridgeSha256": "456add9adea9d25a1f9a0ee648441270b51cb25e2d5aedc54defcfd3f2a11626",
-  "bridgeSizeBytes": 55452018,
-  "bridgeSetupExeUrl": "https://autosongs.example/downloads/AutoSongsBridgeSetup.exe",
-  "bridgeSetupExeSha256": "ebcd40ab5a79c31bb31caa09ccfb424cb412bf02f08130e1a522aaaee26d5587",
-  "bridgeSetupExeSizeBytes": 51224057,
-  "bridgeShUrl": "https://autosongs.example/downloads/autosongs-bridge.sh",
-  "bridgeCmdUrl": "https://autosongs.example/downloads/autosongs-bridge.cmd",
-  "bridgeCoreVersion": "1.4.4",
-  "bridgeCoreUrl": "https://autosongs.example/ytbridge.py",
-  "bridgeCoreSha256": "8e0bd92a61ccd8090f691ab6d0991010a6c4e9e035dafecc94dab2f3149f8803",
-  "bridgeCoreSizeBytes": 116971,
-  "notes": "Pairing now works from anywhere: the phone sends the eight characters to AutoSongs, which says where the bridge is while it is running, so a phone on mobile data pairs with a bridge behind a home router. The Windows setup also closes a bridge that is still open instead of failing with 'the file is being used by another process'.",
-  "published": "2026-11-09T05:11:33Z",
-  "hosts": [
-    "https://autosongs.example"
-  ],
-  "apkSha256": "7e800c4b6f38dea611d71ea1ab5454bff729983e8e23325e31f85193b1928fec",
-  "setupExeSha256": "ebcd40ab5a79c31bb31caa09ccfb424cb412bf02f08130e1a522aaaee26d5587",
-  "setupExeSizeBytes": 51224057
-}
+[
+  {
+    "name": "CMakeLists.txt",
+    "path": "main/CMakeLists.txt",
+    "sha": "5e3f59388d672327453297a562eea25b52aac9ab",
+    "size": 3723,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/CMakeLists.txt?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/CMakeLists.txt",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/5e3f59388d672327453297a562eea25b52aac9ab",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/CMakeLists.txt",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/CMakeLists.txt?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/5e3f59388d672327453297a562eea25b52aac9ab",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/CMakeLists.txt"
+    }
+  },
+  {
+    "name": "Kconfig.projbuild",
+    "path": "main/Kconfig.projbuild",
+    "sha": "b8d2fd2d38b6a0f824672c1160b68f2b6de8dea2",
+    "size": 37,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/Kconfig.projbuild?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/Kconfig.projbuild",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/b8d2fd2d38b6a0f824672c1160b68f2b6de8dea2",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/Kconfig.projbuild",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/Kconfig.projbuild?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/b8d2fd2d38b6a0f824672c1160b68f2b6de8dea2",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/Kconfig.projbuild"
+    }
+  },
+  {
+    "name": "adc.c",
+    "path": "main/adc.c",
+    "sha": "9a6870fc7f68eb88dac52651cabd4de1068d6e3f",
+    "size": 2856,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/adc.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/adc.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/9a6870fc7f68eb88dac52651cabd4de1068d6e3f",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/adc.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/adc.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/9a6870fc7f68eb88dac52651cabd4de1068d6e3f",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/adc.c"
+    }
+  },
+  {
+    "name": "adc.h",
+    "path": "main/adc.h",
+    "sha": "70bd6219dafe98c16ce65776e81e024b6f173ba8",
+    "size": 958,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/adc.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/adc.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/70bd6219dafe98c16ce65776e81e024b6f173ba8",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/adc.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/adc.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/70bd6219dafe98c16ce65776e81e024b6f173ba8",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/adc.h"
+    }
+  },
+  {
+    "name": "ble",
+    "path": "main/ble",
+    "sha": "7e7fb7cec698b2c9c14fe7f09003c69cc5303b1a",
+    "size": 0,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/ble?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/tree/main/main/ble",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/trees/7e7fb7cec698b2c9c14fe7f09003c69cc5303b1a",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/ble?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/trees/7e7fb7cec698b2c9c14fe7f09003c69cc5303b1a",
+      "html": "https://github.com/vedderb/vesc_express/tree/main/main/ble"
+    }
+  },
+  {
+    "name": "bms.c",
+    "path": "main/bms.c",
+    "sha": "ed4dd254fc086586b1b884b900164af677fb2f22",
+    "size": 17434,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/bms.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/bms.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/ed4dd254fc086586b1b884b900164af677fb2f22",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/bms.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/bms.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/ed4dd254fc086586b1b884b900164af677fb2f22",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/bms.c"
+    }
+  },
+  {
+    "name": "bms.h",
+    "path": "main/bms.h",
+    "sha": "ccf7d0095a81e18b98003b4b885ada06595c9fac",
+    "size": 1252,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/bms.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/bms.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/ccf7d0095a81e18b98003b4b885ada06595c9fac",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/bms.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/bms.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/ccf7d0095a81e18b98003b4b885ada06595c9fac",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/bms.h"
+    }
+  },
+  {
+    "name": "buffer.c",
+    "path": "main/buffer.c",
+    "sha": "af7d8b9221577c1a9b4374f2ebe0298f2001dffd",
+    "size": 7414,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/buffer.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/buffer.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/af7d8b9221577c1a9b4374f2ebe0298f2001dffd",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/buffer.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/buffer.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/af7d8b9221577c1a9b4374f2ebe0298f2001dffd",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/buffer.c"
+    }
+  },
+  {
+    "name": "buffer.h",
+    "path": "main/buffer.h",
+    "sha": "21112491f0dae365b30235b9f0217995b22a3107",
+    "size": 2505,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/buffer.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/buffer.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/21112491f0dae365b30235b9f0217995b22a3107",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/buffer.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/buffer.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/21112491f0dae365b30235b9f0217995b22a3107",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/buffer.h"
+    }
+  },
+  {
+    "name": "c_libs",
+    "path": "main/c_libs",
+    "sha": "65e970fbab4de704c1435625cfe1d21a79559098",
+    "size": 0,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/c_libs?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/tree/main/main/c_libs",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/trees/65e970fbab4de704c1435625cfe1d21a79559098",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/c_libs?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/trees/65e970fbab4de704c1435625cfe1d21a79559098",
+      "html": "https://github.com/vedderb/vesc_express/tree/main/main/c_libs"
+    }
+  },
+  {
+    "name": "comm_ble.c",
+    "path": "main/comm_ble.c",
+    "sha": "431509e9a1ab854866aa97296d85d50694a3806c",
+    "size": 22657,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_ble.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/comm_ble.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/431509e9a1ab854866aa97296d85d50694a3806c",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/comm_ble.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_ble.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/431509e9a1ab854866aa97296d85d50694a3806c",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/comm_ble.c"
+    }
+  },
+  {
+    "name": "comm_ble.h",
+    "path": "main/comm_ble.h",
+    "sha": "493f362e07904b71315c95c7c2b0975fae0d3bb4",
+    "size": 1265,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_ble.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/comm_ble.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/493f362e07904b71315c95c7c2b0975fae0d3bb4",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/comm_ble.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_ble.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/493f362e07904b71315c95c7c2b0975fae0d3bb4",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/comm_ble.h"
+    }
+  },
+  {
+    "name": "comm_can.c",
+    "path": "main/comm_can.c",
+    "sha": "0e5b837f46badf065d589d464635fa53466e15de",
+    "size": 45666,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_can.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/comm_can.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/0e5b837f46badf065d589d464635fa53466e15de",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/comm_can.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_can.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/0e5b837f46badf065d589d464635fa53466e15de",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/comm_can.c"
+    }
+  },
+  {
+    "name": "comm_can.h",
+    "path": "main/comm_can.h",
+    "sha": "50807a42fac331c36014d124db3e237a770d38a5",
+    "size": 4555,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_can.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/comm_can.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/50807a42fac331c36014d124db3e237a770d38a5",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/comm_can.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_can.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/50807a42fac331c36014d124db3e237a770d38a5",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/comm_can.h"
+    }
+  },
+  {
+    "name": "comm_uart.c",
+    "path": "main/comm_uart.c",
+    "sha": "57ba6c1d3ad5a50fa4e8ec40808c96770c68d670",
+    "size": 4005,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_uart.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/comm_uart.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/57ba6c1d3ad5a50fa4e8ec40808c96770c68d670",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/comm_uart.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_uart.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/57ba6c1d3ad5a50fa4e8ec40808c96770c68d670",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/comm_uart.c"
+    }
+  },
+  {
+    "name": "comm_uart.h",
+    "path": "main/comm_uart.h",
+    "sha": "3872022b0cf1e45d4f95a58f3bab6b2f05531f3e",
+    "size": 1038,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_uart.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/comm_uart.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/3872022b0cf1e45d4f95a58f3bab6b2f05531f3e",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/comm_uart.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_uart.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/3872022b0cf1e45d4f95a58f3bab6b2f05531f3e",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/comm_uart.h"
+    }
+  },
+  {
+    "name": "comm_usb.c",
+    "path": "main/comm_usb.c",
+    "sha": "e9fce915198a2d640f6dedc36bc77926cf481597",
+    "size": 2458,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_usb.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/comm_usb.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/e9fce915198a2d640f6dedc36bc77926cf481597",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/comm_usb.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_usb.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/e9fce915198a2d640f6dedc36bc77926cf481597",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/comm_usb.c"
+    }
+  },
+  {
+    "name": "comm_usb.h",
+    "path": "main/comm_usb.h",
+    "sha": "d505ab9f9ad9273058084f7f0584427472fee6d6",
+    "size": 938,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_usb.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/comm_usb.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/d505ab9f9ad9273058084f7f0584427472fee6d6",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/comm_usb.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_usb.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/d505ab9f9ad9273058084f7f0584427472fee6d6",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/comm_usb.h"
+    }
+  },
+  {
+    "name": "comm_wifi.c",
+    "path": "main/comm_wifi.c",
+    "sha": "153d1802a880896c1593912a66b183cdd335f779",
+    "size": 22409,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_wifi.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/comm_wifi.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/153d1802a880896c1593912a66b183cdd335f779",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/comm_wifi.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_wifi.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/153d1802a880896c1593912a66b183cdd335f779",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/comm_wifi.c"
+    }
+  },
+  {
+    "name": "comm_wifi.h",
+    "path": "main/comm_wifi.h",
+    "sha": "4afec7ff02c8f76d6ebfdb65be1d53895631bf85",
+    "size": 7759,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_wifi.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/comm_wifi.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/4afec7ff02c8f76d6ebfdb65be1d53895631bf85",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/comm_wifi.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/comm_wifi.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/4afec7ff02c8f76d6ebfdb65be1d53895631bf85",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/comm_wifi.h"
+    }
+  },
+  {
+    "name": "commands.c",
+    "path": "main/commands.c",
+    "sha": "91ea9ddb4de087e9d5a6876c5036e387e8c50a69",
+    "size": 34233,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/commands.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/commands.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/91ea9ddb4de087e9d5a6876c5036e387e8c50a69",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/commands.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/commands.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/91ea9ddb4de087e9d5a6876c5036e387e8c50a69",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/commands.c"
+    }
+  },
+  {
+    "name": "commands.h",
+    "path": "main/commands.h",
+    "sha": "7f1770d0c695d1e01c7a59bddc8a6c54024c4ec5",
+    "size": 2720,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/commands.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/commands.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/7f1770d0c695d1e01c7a59bddc8a6c54024c4ec5",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/commands.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/commands.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/7f1770d0c695d1e01c7a59bddc8a6c54024c4ec5",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/commands.h"
+    }
+  },
+  {
+    "name": "conf_custom.c",
+    "path": "main/conf_custom.c",
+    "sha": "4f228e448119fffa69ae4311ef475b7a8fa4c4ba",
+    "size": 4666,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/conf_custom.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/conf_custom.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/4f228e448119fffa69ae4311ef475b7a8fa4c4ba",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/conf_custom.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/conf_custom.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/4f228e448119fffa69ae4311ef475b7a8fa4c4ba",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/conf_custom.c"
+    }
+  },
+  {
+    "name": "conf_custom.h",
+    "path": "main/conf_custom.h",
+    "sha": "7cc894f713a4b3cd6fffe9e7d08e88baac5d1c15",
+    "size": 1301,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/conf_custom.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/conf_custom.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/7cc894f713a4b3cd6fffe9e7d08e88baac5d1c15",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/conf_custom.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/conf_custom.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/7cc894f713a4b3cd6fffe9e7d08e88baac5d1c15",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/conf_custom.h"
+    }
+  },
+  {
+    "name": "conf_general.h",
+    "path": "main/conf_general.h",
+    "sha": "80460d75bbd5884cc8bc353d82f798834010f4a7",
+    "size": 1260,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/conf_general.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/conf_general.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/80460d75bbd5884cc8bc353d82f798834010f4a7",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/conf_general.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/conf_general.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/80460d75bbd5884cc8bc353d82f798834010f4a7",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/conf_general.h"
+    }
+  },
+  {
+    "name": "config",
+    "path": "main/config",
+    "sha": "165250089ae3b00516bb474516de15e79308872d",
+    "size": 0,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/config?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/tree/main/main/config",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/trees/165250089ae3b00516bb474516de15e79308872d",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/config?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/trees/165250089ae3b00516bb474516de15e79308872d",
+      "html": "https://github.com/vedderb/vesc_express/tree/main/main/config"
+    }
+  },
+  {
+    "name": "crc.c",
+    "path": "main/crc.c",
+    "sha": "ecec9791e2d457e76ad6a02ce708cd07ca1b5ccf",
+    "size": 3668,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/crc.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/crc.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/ecec9791e2d457e76ad6a02ce708cd07ca1b5ccf",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/crc.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/crc.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/ecec9791e2d457e76ad6a02ce708cd07ca1b5ccf",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/crc.c"
+    }
+  },
+  {
+    "name": "crc.h",
+    "path": "main/crc.h",
+    "sha": "83f3310826fc40a643c7c99b0c0e493043ca6813",
+    "size": 1085,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/crc.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/crc.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/83f3310826fc40a643c7c99b0c0e493043ca6813",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/crc.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/crc.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/83f3310826fc40a643c7c99b0c0e493043ca6813",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/crc.h"
+    }
+  },
+  {
+    "name": "datatypes.h",
+    "path": "main/datatypes.h",
+    "sha": "49b277c9f87b18f6b61a53e793618744ff84d351",
+    "size": 11516,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/datatypes.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/datatypes.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/49b277c9f87b18f6b61a53e793618744ff84d351",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/datatypes.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/datatypes.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/49b277c9f87b18f6b61a53e793618744ff84d351",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/datatypes.h"
+    }
+  },
+  {
+    "name": "digital_filter.c",
+    "path": "main/digital_filter.c",
+    "sha": "ac1ce8d0fdf5552afc5e16f8a117145489e1c7c6",
+    "size": 6103,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/digital_filter.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/digital_filter.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/ac1ce8d0fdf5552afc5e16f8a117145489e1c7c6",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/digital_filter.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/digital_filter.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/ac1ce8d0fdf5552afc5e16f8a117145489e1c7c6",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/digital_filter.c"
+    }
+  },
+  {
+    "name": "digital_filter.h",
+    "path": "main/digital_filter.h",
+    "sha": "fbc11f2cb7c23657307caa556db5d549f79fec7c",
+    "size": 1705,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/digital_filter.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/digital_filter.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/fbc11f2cb7c23657307caa556db5d549f79fec7c",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/digital_filter.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/digital_filter.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/fbc11f2cb7c23657307caa556db5d549f79fec7c",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/digital_filter.h"
+    }
+  },
+  {
+    "name": "display",
+    "path": "main/display",
+    "sha": "b3527959b4259dd73fff2a95ac658470b908c48c",
+    "size": 0,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/display?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/tree/main/main/display",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/trees/b3527959b4259dd73fff2a95ac658470b908c48c",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/display?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/trees/b3527959b4259dd73fff2a95ac658470b908c48c",
+      "html": "https://github.com/vedderb/vesc_express/tree/main/main/display"
+    }
+  },
+  {
+    "name": "drivers",
+    "path": "main/drivers",
+    "sha": "cf317ba1fc7887e4385affc6d19a06e47ad2edad",
+    "size": 0,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/drivers?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/tree/main/main/drivers",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/trees/cf317ba1fc7887e4385affc6d19a06e47ad2edad",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/drivers?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/trees/cf317ba1fc7887e4385affc6d19a06e47ad2edad",
+      "html": "https://github.com/vedderb/vesc_express/tree/main/main/drivers"
+    }
+  },
+  {
+    "name": "flash_helper.c",
+    "path": "main/flash_helper.c",
+    "sha": "e2285bcfb970779388fb645e2de172c889500532",
+    "size": 8246,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/flash_helper.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/flash_helper.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/e2285bcfb970779388fb645e2de172c889500532",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/flash_helper.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/flash_helper.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/e2285bcfb970779388fb645e2de172c889500532",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/flash_helper.c"
+    }
+  },
+  {
+    "name": "flash_helper.h",
+    "path": "main/flash_helper.h",
+    "sha": "b138ed42afd136e572c40969c06dec274025eabe",
+    "size": 2083,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/flash_helper.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/flash_helper.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/b138ed42afd136e572c40969c06dec274025eabe",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/flash_helper.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/flash_helper.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/b138ed42afd136e572c40969c06dec274025eabe",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/flash_helper.h"
+    }
+  },
+  {
+    "name": "hwconf",
+    "path": "main/hwconf",
+    "sha": "2919f9e8e8ccc0b6114eab75493478800f6d4dc9",
+    "size": 0,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/hwconf?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/tree/main/main/hwconf",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/trees/2919f9e8e8ccc0b6114eab75493478800f6d4dc9",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/hwconf?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/trees/2919f9e8e8ccc0b6114eab75493478800f6d4dc9",
+      "html": "https://github.com/vedderb/vesc_express/tree/main/main/hwconf"
+    }
+  },
+  {
+    "name": "idf_component.yml",
+    "path": "main/idf_component.yml",
+    "sha": "11ddcbd0f4f9f639ca9d81f28850e56ce1c3e58a",
+    "size": 1202,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/idf_component.yml?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/idf_component.yml",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/11ddcbd0f4f9f639ca9d81f28850e56ce1c3e58a",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/idf_component.yml",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/idf_component.yml?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/11ddcbd0f4f9f639ca9d81f28850e56ce1c3e58a",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/idf_component.yml"
+    }
+  },
+  {
+    "name": "lbm_color_extensions.c",
+    "path": "main/lbm_color_extensions.c",
+    "sha": "697405ed9a41f05b8f04ee618d97d9b06dcb8f75",
+    "size": 9032,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lbm_color_extensions.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/lbm_color_extensions.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/697405ed9a41f05b8f04ee618d97d9b06dcb8f75",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/lbm_color_extensions.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lbm_color_extensions.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/697405ed9a41f05b8f04ee618d97d9b06dcb8f75",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/lbm_color_extensions.c"
+    }
+  },
+  {
+    "name": "lbm_color_extensions.h",
+    "path": "main/lbm_color_extensions.h",
+    "sha": "65d6c5bbb534f572df3f81ee701623cd43aa19f9",
+    "size": 874,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lbm_color_extensions.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/lbm_color_extensions.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/65d6c5bbb534f572df3f81ee701623cd43aa19f9",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/lbm_color_extensions.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lbm_color_extensions.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/65d6c5bbb534f572df3f81ee701623cd43aa19f9",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/lbm_color_extensions.h"
+    }
+  },
+  {
+    "name": "lbm_vesc_utils.c",
+    "path": "main/lbm_vesc_utils.c",
+    "sha": "a4a0fb185fcdf7b40bee3c8662e15d26287a1d2b",
+    "size": 3481,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lbm_vesc_utils.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/lbm_vesc_utils.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/a4a0fb185fcdf7b40bee3c8662e15d26287a1d2b",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/lbm_vesc_utils.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lbm_vesc_utils.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/a4a0fb185fcdf7b40bee3c8662e15d26287a1d2b",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/lbm_vesc_utils.c"
+    }
+  },
+  {
+    "name": "lbm_vesc_utils.h",
+    "path": "main/lbm_vesc_utils.h",
+    "sha": "0726a0fab2c61d03f9adcad9c8783eac2a16e6fd",
+    "size": 7436,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lbm_vesc_utils.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/lbm_vesc_utils.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/0726a0fab2c61d03f9adcad9c8783eac2a16e6fd",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/lbm_vesc_utils.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lbm_vesc_utils.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/0726a0fab2c61d03f9adcad9c8783eac2a16e6fd",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/lbm_vesc_utils.h"
+    }
+  },
+  {
+    "name": "linker_libif_esp32c3.ld",
+    "path": "main/linker_libif_esp32c3.ld",
+    "sha": "6e69ce08ffd3f26c3b987bfe23d04389246f123a",
+    "size": 880,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/linker_libif_esp32c3.ld?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/linker_libif_esp32c3.ld",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/6e69ce08ffd3f26c3b987bfe23d04389246f123a",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/linker_libif_esp32c3.ld",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/linker_libif_esp32c3.ld?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/6e69ce08ffd3f26c3b987bfe23d04389246f123a",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/linker_libif_esp32c3.ld"
+    }
+  },
+  {
+    "name": "linker_libif_esp32c6.ld",
+    "path": "main/linker_libif_esp32c6.ld",
+    "sha": "bbd15d42678070167e78962277ce6f10c9646125",
+    "size": 655,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/linker_libif_esp32c6.ld?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/linker_libif_esp32c6.ld",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/bbd15d42678070167e78962277ce6f10c9646125",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/linker_libif_esp32c6.ld",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/linker_libif_esp32c6.ld?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/bbd15d42678070167e78962277ce6f10c9646125",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/linker_libif_esp32c6.ld"
+    }
+  },
+  {
+    "name": "linker_libif_esp32p4.ld",
+    "path": "main/linker_libif_esp32p4.ld",
+    "sha": "906af2ac8568b187dbd20e60777e67785f02dca6",
+    "size": 705,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/linker_libif_esp32p4.ld?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/linker_libif_esp32p4.ld",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/906af2ac8568b187dbd20e60777e67785f02dca6",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/linker_libif_esp32p4.ld",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/linker_libif_esp32p4.ld?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/906af2ac8568b187dbd20e60777e67785f02dca6",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/linker_libif_esp32p4.ld"
+    }
+  },
+  {
+    "name": "linker_libif_esp32s3.ld",
+    "path": "main/linker_libif_esp32s3.ld",
+    "sha": "bd877d2098a599f4389cbf72362a4d03903b2fe2",
+    "size": 654,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/linker_libif_esp32s3.ld?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/linker_libif_esp32s3.ld",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/bd877d2098a599f4389cbf72362a4d03903b2fe2",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/linker_libif_esp32s3.ld",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/linker_libif_esp32s3.ld?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/bd877d2098a599f4389cbf72362a4d03903b2fe2",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/linker_libif_esp32s3.ld"
+    }
+  },
+  {
+    "name": "lispBM",
+    "path": "main/lispBM",
+    "sha": "d913a032f6ddb305afe75f8ab7460a432dda506a",
+    "size": 0,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispBM?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/tree/main/main/lispBM",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/trees/d913a032f6ddb305afe75f8ab7460a432dda506a",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispBM?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/trees/d913a032f6ddb305afe75f8ab7460a432dda506a",
+      "html": "https://github.com/vedderb/vesc_express/tree/main/main/lispBM"
+    }
+  },
+  {
+    "name": "lispif.c",
+    "path": "main/lispif.c",
+    "sha": "7084d5b624e464b6a97709696cdc8a20d681391b",
+    "size": 30065,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/lispif.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/7084d5b624e464b6a97709696cdc8a20d681391b",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/lispif.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/7084d5b624e464b6a97709696cdc8a20d681391b",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/lispif.c"
+    }
+  },
+  {
+    "name": "lispif.h",
+    "path": "main/lispif.h",
+    "sha": "81a1fd0d4ea5fe7db20f20b25cc3fd21345b6d18",
+    "size": 2247,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/lispif.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/81a1fd0d4ea5fe7db20f20b25cc3fd21345b6d18",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/lispif.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/81a1fd0d4ea5fe7db20f20b25cc3fd21345b6d18",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/lispif.h"
+    }
+  },
+  {
+    "name": "lispif_c_lib.c",
+    "path": "main/lispif_c_lib.c",
+    "sha": "6f8f8cd80e148bc7e9ba60702563fb222225463a",
+    "size": 28048,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif_c_lib.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/lispif_c_lib.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/6f8f8cd80e148bc7e9ba60702563fb222225463a",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/lispif_c_lib.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif_c_lib.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/6f8f8cd80e148bc7e9ba60702563fb222225463a",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/lispif_c_lib.c"
+    }
+  },
+  {
+    "name": "lispif_events.c",
+    "path": "main/lispif_events.c",
+    "sha": "4a49c4bcca42f3b73c3913a9187eeae3981cea8b",
+    "size": 2341,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif_events.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/lispif_events.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/4a49c4bcca42f3b73c3913a9187eeae3981cea8b",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/lispif_events.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif_events.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/4a49c4bcca42f3b73c3913a9187eeae3981cea8b",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/lispif_events.c"
+    }
+  },
+  {
+    "name": "lispif_events.h",
+    "path": "main/lispif_events.h",
+    "sha": "cf8e463f572731b7ab5a1c69b2b4634dfedc2edd",
+    "size": 1255,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif_events.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/lispif_events.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/cf8e463f572731b7ab5a1c69b2b4634dfedc2edd",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/lispif_events.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif_events.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/cf8e463f572731b7ab5a1c69b2b4634dfedc2edd",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/lispif_events.h"
+    }
+  },
+  {
+    "name": "lispif_vesc_extensions.c",
+    "path": "main/lispif_vesc_extensions.c",
+    "sha": "7cc9c3c6340ae009054995ef333b3c47975ef4fc",
+    "size": 187636,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif_vesc_extensions.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/lispif_vesc_extensions.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/7cc9c3c6340ae009054995ef333b3c47975ef4fc",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/lispif_vesc_extensions.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lispif_vesc_extensions.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/7cc9c3c6340ae009054995ef333b3c47975ef4fc",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/lispif_vesc_extensions.c"
+    }
+  },
+  {
+    "name": "log.c",
+    "path": "main/log.c",
+    "sha": "9b3166f15a5118ecf55ebedb0ed4bb767574a63a",
+    "size": 14901,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/log.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/log.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/9b3166f15a5118ecf55ebedb0ed4bb767574a63a",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/log.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/log.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/9b3166f15a5118ecf55ebedb0ed4bb767574a63a",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/log.c"
+    }
+  },
+  {
+    "name": "log.h",
+    "path": "main/log.h",
+    "sha": "1cbd47182d05286d08a17f5c02d0288faffa960b",
+    "size": 1464,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/log.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/log.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/1cbd47182d05286d08a17f5c02d0288faffa960b",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/log.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/log.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/1cbd47182d05286d08a17f5c02d0288faffa960b",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/log.h"
+    }
+  },
+  {
+    "name": "log_comm.c",
+    "path": "main/log_comm.c",
+    "sha": "b9ad8d442c77c5b427138233cca512d8765ebfa7",
+    "size": 2598,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/log_comm.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/log_comm.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/b9ad8d442c77c5b427138233cca512d8765ebfa7",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/log_comm.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/log_comm.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/b9ad8d442c77c5b427138233cca512d8765ebfa7",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/log_comm.c"
+    }
+  },
+  {
+    "name": "log_comm.h",
+    "path": "main/log_comm.h",
+    "sha": "c0be10c2729cffaa814658bd7e987f4eb77c4ac9",
+    "size": 1292,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/log_comm.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/log_comm.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/c0be10c2729cffaa814658bd7e987f4eb77c4ac9",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/log_comm.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/log_comm.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/c0be10c2729cffaa814658bd7e987f4eb77c4ac9",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/log_comm.h"
+    }
+  },
+  {
+    "name": "lowzip",
+    "path": "main/lowzip",
+    "sha": "e91a7dbb10fe4c36a5f8603afd8b89b4844ed14e",
+    "size": 0,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lowzip?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/tree/main/main/lowzip",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/trees/e91a7dbb10fe4c36a5f8603afd8b89b4844ed14e",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/lowzip?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/trees/e91a7dbb10fe4c36a5f8603afd8b89b4844ed14e",
+      "html": "https://github.com/vedderb/vesc_express/tree/main/main/lowzip"
+    }
+  },
+  {
+    "name": "main.c",
+    "path": "main/main.c",
+    "sha": "a545224fdf11ed7798c121e58934ef9150a6f193",
+    "size": 6383,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/main.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/main.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/a545224fdf11ed7798c121e58934ef9150a6f193",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/main.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/main.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/a545224fdf11ed7798c121e58934ef9150a6f193",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/main.c"
+    }
+  },
+  {
+    "name": "main.h",
+    "path": "main/main.h",
+    "sha": "c2df70b6c475fdb3d426bde41656aa5315dd45aa",
+    "size": 2557,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/main.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/main.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/c2df70b6c475fdb3d426bde41656aa5315dd45aa",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/main.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/main.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/c2df70b6c475fdb3d426bde41656aa5315dd45aa",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/main.h"
+    }
+  },
+  {
+    "name": "mempools.c",
+    "path": "main/mempools.c",
+    "sha": "3ebe864719eb1d896232a4a48a21ba20d95e0d2c",
+    "size": 1717,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/mempools.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/mempools.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/3ebe864719eb1d896232a4a48a21ba20d95e0d2c",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/mempools.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/mempools.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/3ebe864719eb1d896232a4a48a21ba20d95e0d2c",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/mempools.c"
+    }
+  },
+  {
+    "name": "mempools.h",
+    "path": "main/mempools.h",
+    "sha": "9122b4952aa4c09ed7f500c1fe9a30d77a70ad5b",
+    "size": 1036,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/mempools.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/mempools.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/9122b4952aa4c09ed7f500c1fe9a30d77a70ad5b",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/mempools.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/mempools.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/9122b4952aa4c09ed7f500c1fe9a30d77a70ad5b",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/mempools.h"
+    }
+  },
+  {
+    "name": "nmea.c",
+    "path": "main/nmea.c",
+    "sha": "f35bfe6435aec89742d11c2edbc357d90ef5fbdb",
+    "size": 10757,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/nmea.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/nmea.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/f35bfe6435aec89742d11c2edbc357d90ef5fbdb",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/nmea.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/nmea.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/f35bfe6435aec89742d11c2edbc357d90ef5fbdb",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/nmea.c"
+    }
+  },
+  {
+    "name": "nmea.h",
+    "path": "main/nmea.h",
+    "sha": "4f077fcdf66e4498b45439567f3beed91d48ba24",
+    "size": 2220,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/nmea.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/nmea.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/4f077fcdf66e4498b45439567f3beed91d48ba24",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/nmea.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/nmea.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/4f077fcdf66e4498b45439567f3beed91d48ba24",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/nmea.h"
+    }
+  },
+  {
+    "name": "packet.c",
+    "path": "main/packet.c",
+    "sha": "70279c08400a4281959bdb22e626a7422bde35ec",
+    "size": 6147,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/packet.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/packet.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/70279c08400a4281959bdb22e626a7422bde35ec",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/packet.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/packet.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/70279c08400a4281959bdb22e626a7422bde35ec",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/packet.c"
+    }
+  },
+  {
+    "name": "packet.h",
+    "path": "main/packet.h",
+    "sha": "e747d3e5c3257656adae8bec81db1d19324466fc",
+    "size": 1690,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/packet.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/packet.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/e747d3e5c3257656adae8bec81db1d19324466fc",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/packet.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/packet.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/e747d3e5c3257656adae8bec81db1d19324466fc",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/packet.h"
+    }
+  },
+  {
+    "name": "rb.c",
+    "path": "main/rb.c",
+    "sha": "548d971378c0297d070a26e5d691d7ad671699f6",
+    "size": 4229,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/rb.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/rb.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/548d971378c0297d070a26e5d691d7ad671699f6",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/rb.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/rb.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/548d971378c0297d070a26e5d691d7ad671699f6",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/rb.c"
+    }
+  },
+  {
+    "name": "rb.h",
+    "path": "main/rb.h",
+    "sha": "9c4744ec412539b30fa66aab017126c7e8898c96",
+    "size": 1644,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/rb.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/rb.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/9c4744ec412539b30fa66aab017126c7e8898c96",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/rb.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/rb.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/9c4744ec412539b30fa66aab017126c7e8898c96",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/rb.h"
+    }
+  },
+  {
+    "name": "rgbled",
+    "path": "main/rgbled",
+    "sha": "bec5468112a029a486391e689056da66f5d417fe",
+    "size": 0,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/rgbled?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/tree/main/main/rgbled",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/trees/bec5468112a029a486391e689056da66f5d417fe",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/rgbled?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/trees/bec5468112a029a486391e689056da66f5d417fe",
+      "html": "https://github.com/vedderb/vesc_express/tree/main/main/rgbled"
+    }
+  },
+  {
+    "name": "terminal.c",
+    "path": "main/terminal.c",
+    "sha": "014c17a913641989918e9a0b28434f8afb0bc087",
+    "size": 12896,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/terminal.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/terminal.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/014c17a913641989918e9a0b28434f8afb0bc087",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/terminal.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/terminal.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/014c17a913641989918e9a0b28434f8afb0bc087",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/terminal.c"
+    }
+  },
+  {
+    "name": "terminal.h",
+    "path": "main/terminal.h",
+    "sha": "8633c70d6471d8f712b302e970b825ace010cec5",
+    "size": 1138,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/terminal.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/terminal.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/8633c70d6471d8f712b302e970b825ace010cec5",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/terminal.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/terminal.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/8633c70d6471d8f712b302e970b825ace010cec5",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/terminal.h"
+    }
+  },
+  {
+    "name": "touch",
+    "path": "main/touch",
+    "sha": "d236dbb554683a60d66f9044432b6866cf53cfc3",
+    "size": 0,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/touch?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/tree/main/main/touch",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/trees/d236dbb554683a60d66f9044432b6866cf53cfc3",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/touch?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/trees/d236dbb554683a60d66f9044432b6866cf53cfc3",
+      "html": "https://github.com/vedderb/vesc_express/tree/main/main/touch"
+    }
+  },
+  {
+    "name": "ublox.c",
+    "path": "main/ublox.c",
+    "sha": "41ffd7a7544435c6a0d13c06990c48a76f4df6c8",
+    "size": 50758,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/ublox.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/ublox.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/41ffd7a7544435c6a0d13c06990c48a76f4df6c8",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/ublox.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/ublox.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/41ffd7a7544435c6a0d13c06990c48a76f4df6c8",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/ublox.c"
+    }
+  },
+  {
+    "name": "ublox.h",
+    "path": "main/ublox.h",
+    "sha": "c1af7d7a8cc2826a82dda3a695e7e0dd3284f8a8",
+    "size": 22274,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/ublox.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/ublox.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/c1af7d7a8cc2826a82dda3a695e7e0dd3284f8a8",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/ublox.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/ublox.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/c1af7d7a8cc2826a82dda3a695e7e0dd3284f8a8",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/ublox.h"
+    }
+  },
+  {
+    "name": "utils.c",
+    "path": "main/utils.c",
+    "sha": "bb76a92f4c8d24da5cfb3a1837c56fb42e52f6f2",
+    "size": 4956,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/utils.c?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/utils.c",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/bb76a92f4c8d24da5cfb3a1837c56fb42e52f6f2",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/utils.c",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/utils.c?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/bb76a92f4c8d24da5cfb3a1837c56fb42e52f6f2",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/utils.c"
+    }
+  },
+  {
+    "name": "utils.h",
+    "path": "main/utils.h",
+    "sha": "a2219b50972497c238d5d69060bcad2427b195c7",
+    "size": 4312,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/utils.h?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/blob/main/main/utils.h",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/a2219b50972497c238d5d69060bcad2427b195c7",
+    "download_url": "https://raw.githubusercontent.com/vedderb/vesc_express/main/main/utils.h",
+    "type": "file",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/utils.h?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/blobs/a2219b50972497c238d5d69060bcad2427b195c7",
+      "html": "https://github.com/vedderb/vesc_express/blob/main/main/utils.h"
+    }
+  },
+  {
+    "name": "wifi",
+    "path": "main/wifi",
+    "sha": "31eacd675b5fb4e4045e5833c66842d33fb28c46",
+    "size": 0,
+    "url": "https://api.github.com/repos/vedderb/vesc_express/contents/main/wifi?ref=main",
+    "html_url": "https://github.com/vedderb/vesc_express/tree/main/main/wifi",
+    "git_url": "https://api.github.com/repos/vedderb/vesc_express/git/trees/31eacd675b5fb4e4045e5833c66842d33fb28c46",
+    "download_url": null,
+    "type": "dir",
+    "_links": {
+      "self": "https://api.github.com/repos/vedderb/vesc_express/contents/main/wifi?ref=main",
+      "git": "https://api.github.com/repos/vedderb/vesc_express/git/trees/31eacd675b5fb4e4045e5833c66842d33fb28c46",
+      "html": "https://github.com/vedderb/vesc_express/tree/main/main/wifi"
+    }
+  }
+]
