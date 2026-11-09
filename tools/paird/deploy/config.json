@@ -8,6 +8,7 @@
     "token": "",
     "account": "",
     "zone": "",
-    "prefix": "bridge.autosongs.org"
+    "domain": "autosongs.org",
+    "label": "relay"
   }
 }

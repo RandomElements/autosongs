@@ -47,7 +47,8 @@ type cloudflareConfig struct {
 	Token   string `json:"token"`   // an API token: Account.Tunnel:Edit, Zone.DNS:Edit
 	Account string `json:"account"` // the account id that owns the tunnels
 	Zone    string `json:"zone"`    // the zone id of the domain below
-	Prefix  string `json:"prefix"`  // "bridge" -> <slug>.bridge.example.com
+	Domain  string `json:"domain"`  // "example.com"
+	Label   string `json:"label"`   // "relay" -> relay-<slug>.example.com
 }
 
 type config struct {
@@ -439,7 +440,7 @@ func (s *server) handleTunnel(w http.ResponseWriter, r *http.Request) {
 	}
 
 	cf := s.cfg.Cloudflare
-	if cf.Token == "" || cf.Account == "" || cf.Zone == "" || cf.Prefix == "" {
+	if cf.Token == "" || cf.Account == "" || cf.Zone == "" || cf.Domain == "" || cf.Label == "" {
 		fail(w, 503, "this server has no Cloudflare credentials yet")
 		return
 	}
@@ -448,7 +449,9 @@ func (s *server) handleTunnel(w http.ResponseWriter, r *http.Request) {
 	if slug == "" {
 		slug = randomHex(5)
 	}
-	hostname := slug + "." + cf.Prefix
+	// One label deep, not two: a free Universal SSL certificate covers
+	// example.com and *.example.com, and nothing below that.
+	hostname := cf.Label + "-" + slug + "." + cf.Domain
 
 	id, token, err := s.makeCloudflareTunnel(r, slug, hostname, origin)
 	if err != nil {
