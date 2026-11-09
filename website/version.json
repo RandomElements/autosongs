@@ -1,9 +1,9 @@
 {
-  "versionName": "1.4.29",
-  "versionCode": 174,
-  "sha256": "b45bace5b7b8d2c5632e16ba8a578d6770c8255734991fa70218c93b29181a78",
-  "sizeBytes": 55822890,
-  "apkUrl": "https://autosongs.example/downloads/AutoSongs-1.4.29.apk",
+  "versionName": "1.4.30",
+  "versionCode": 175,
+  "sha256": "6dcb12d9e8a627800108dcba36ad0217428a37e9548e059bdd5c761a0a6715ea",
+  "sizeBytes": 55823618,
+  "apkUrl": "https://autosongs.example/downloads/AutoSongs-1.4.30.apk",
   "bridgeApkUrl": "https://autosongs.example/downloads/AutoSongsBridge-1.4.26.apk",
   "bridgeSha256": "456add9adea9d25a1f9a0ee648441270b51cb25e2d5aedc54defcfd3f2a11626",
   "bridgeSizeBytes": 55452018,
@@ -12,16 +12,16 @@
   "bridgeSetupExeSizeBytes": 51224057,
   "bridgeShUrl": "https://autosongs.example/downloads/autosongs-bridge.sh",
   "bridgeCmdUrl": "https://autosongs.example/downloads/autosongs-bridge.cmd",
-  "bridgeCoreVersion": "1.4.7",
+  "bridgeCoreVersion": "1.4.8",
   "bridgeCoreUrl": "https://autosongs.example/ytbridge.py",
-  "bridgeCoreSha256": "d80a1ae9afe2093884958ac7c433103233a74d4954d56add8e4cee40a307b832",
-  "bridgeCoreSizeBytes": 119937,
-  "notes": "Bridge 1.4.7: a fixed address that was made for a different port is reported instead of quietly answering \"bad gateway\"; a cover is only asked for in containers that can hold one; a second copy of the bridge can no longer share a port.",
-  "published": "2026-11-09T05:54:47Z",
+  "bridgeCoreSha256": "910865339bd3323140f61a0588600c60fbc83c8da69edd6bfb885eeba3d35203",
+  "bridgeCoreSizeBytes": 120214,
+  "notes": "1.4.30: 'save on the computer' now actually tells the bridge to save there, and the computer produces the format you picked - it used to ask for the untouched original and leave a .webm in the bridge's working folder. Bridge 1.4.8 keeps the song in its download folder when no library folder is set.",
+  "published": "2026-11-09T06:22:40Z",
   "hosts": [
     "https://autosongs.example"
   ],
-  "apkSha256": "b45bace5b7b8d2c5632e16ba8a578d6770c8255734991fa70218c93b29181a78",
+  "apkSha256": "6dcb12d9e8a627800108dcba36ad0217428a37e9548e059bdd5c761a0a6715ea",
   "setupExeSha256": "ebcd40ab5a79c31bb31caa09ccfb424cb412bf02f08130e1a522aaaee26d5587",
   "setupExeSizeBytes": 51224057
 }

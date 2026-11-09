@@ -53,7 +53,7 @@ import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
-BRIDGE_VERSION = "1.4.7"
+BRIDGE_VERSION = "1.4.8"
 
 # Where the newest bridge is published. The bridge checks these on its own
 # and replaces itself, so a fix does not need the phone to install anything.
@@ -2386,8 +2386,12 @@ def _run_job_once(job_id, query, preset, video_quality, embed_metadata,
             # where it is, so the phone can still fetch it if the user
             # changes their mind halfway through.
             try:
-                os.makedirs(LIBRARY_DIR, exist_ok=True)
-                library = os.path.join(LIBRARY_DIR, os.path.basename(target))
+                # A bridge started without a library folder keeps the song
+                # next to its other downloads rather than failing to put it
+                # anywhere - the folder is a setting, not a requirement.
+                library_dir = LIBRARY_DIR or WORKDIR
+                os.makedirs(library_dir, exist_ok=True)
+                library = os.path.join(library_dir, os.path.basename(target))
                 if os.path.abspath(library) != os.path.abspath(target):
                     shutil.copy2(target, library)
                 print("[bridge] job %s: kept on this machine at %s"

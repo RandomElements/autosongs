@@ -198,7 +198,12 @@ class WatcherService : LifecycleService() {
             videoQuality = settings.preset.quality.takeIf { it > 0 } ?: settings.videoQuality,
             embedMetadata = settings.embedMetadata,
             embedThumbnail = settings.embedThumbnail,
-            expectedDurationSec = track.durationMs / 1000
+            expectedDurationSec = track.durationMs / 1000,
+            // Where the song is to live is the whole point of this switch.
+            // Without it every job was "local", so a song meant for the
+            // computer was left in the bridge's working folder and never
+            // appeared in the library folder the user chose.
+            save = if (settings.saveLocation == AppSettings.SAVE_BRIDGE) "bridge" else "local"
         )
         val jobId = started.getOrElse { error ->
             Log.e(TAG, "bridge unreachable: ${error.message}")
@@ -285,7 +290,7 @@ class WatcherService : LifecycleService() {
         // The song was to be kept on the bridge, not on this phone. The
         // bridge has already put it in its library folder, so there is
         // nothing to fetch and nothing to save here.
-        if (settings.saveLocation == AppSettings.SAVE_BRIDGE && !settings.isEmbedded) {
+        if (savesOnTheBridge()) {
             val where = final.savedAt.ifBlank { "the bridge's library folder" }
             Log.i(TAG, "kept on the bridge: $where")
             notify(track, "Saved on the bridge")
@@ -456,11 +461,20 @@ class WatcherService : LifecycleService() {
      * user is left with nothing.
      */
     private fun bridgePreset(): String =
-        if (settings.preset == FormatPreset.AUDIO_MP3) {
+        if (settings.preset == FormatPreset.AUDIO_MP3 && !savesOnTheBridge()) {
+            // The phone makes this mp3 itself, so the bridge only has to
+            // hand over the sound it downloaded.
             FormatPreset.AUDIO_ORIGINAL.id
         } else {
+            // A song kept on the computer never passes through the phone,
+            // so the bridge must produce the format that was asked for -
+            // otherwise an "MP3" download lands on the PC as a .webm.
             settings.preset.id
         }
+
+    /** True when the song is to be kept on the computer rather than here. */
+    private fun savesOnTheBridge() =
+        settings.saveLocation == AppSettings.SAVE_BRIDGE && !settings.isEmbedded
 
     /** True when the bridge answered "no such file" (404). */
     private fun isMissingFile(result: Result<*>): Boolean =
