@@ -46,7 +46,7 @@ DEFAULT_MUSIC = os.path.join(HOME, "Music")
 # throwaway host names are gone from this launcher so it can never pick
 # up an old published copy.
 HOSTS = [
-    "https://autosongs.example",
+    "https://autosongs.org",
 ]
 
 SELF = os.path.abspath(sys.executable if FROZEN else __file__)
@@ -63,9 +63,11 @@ AUTOSTART_FILE = os.path.join(HOME, ".config", "autostart", "autosongs-bridge.de
 NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0x08000000) if IS_WIN else 0
 
 # The lines the bridge prints when it starts (see print_pairing_banner).
-SHORT_RE = re.compile(r"^\s{4,}([0-9A-HJKMNP-TV-Z]{8})\s*$")
-LONG_RE = re.compile(r"^\s{4,}([0-9A-Z]{4,}(?:-[0-9A-Z]+)+)\s*$")
+SHORT_RE = re.compile(r"^\s{4,}([0-9A-HJKMNP-TV-Z]{4}-?[0-9A-HJKMNP-TV-Z]{4})\s*$")
+LONG_RE = re.compile(r"^\s{4,}([0-9A-Z]{4,}(?:-[0-9A-Z]+){2,})\s*$")
 ADDR_RE = re.compile(r"^\s*Address:\s*(\S+)\s*$")
+# The tunnel's fixed address, printed on a line of its own.
+URL_RE = re.compile(r"^\s{4,}(https://[^\s]+)\s*$")
 
 COLORS = {
     "stopped": (110, 118, 129),
@@ -452,16 +454,18 @@ class Bridge:
                     if "listening on" in line:
                         self.state = "running"
                         self.message = "Listening on port %d" % PORT
-                    if "reachable at" in line:
-                        # The tunnel's address. The phone cannot find a
-                        # bridge on another network by looking for it, so
-                        # this is shown next to the code.
+                    m = URL_RE.match(line)
+                    if m:
+                        # The tunnel's fixed address. The phone cannot find
+                        # a bridge on another network by looking for it, so
+                        # the address is shown beside the code - and it is
+                        # the same address every time the bridge starts.
                         #
                         # The lock is not taken again here: it is not
                         # re-entrant, and taking it twice from the same
                         # thread would wait for itself and stop the
                         # bridge's output from ever being read again.
-                        self.public_url = line.split("reachable at", 1)[1].strip()
+                        self.public_url = m.group(1)
                     m = SHORT_RE.match(line)
                     if m:
                         self.short = m.group(1)
@@ -806,6 +810,7 @@ class App:
         self.icon = None
         self.icon_state = None
         self.pair_win = None
+        self.pair_reset = None
         self.lock_sock = lock_sock
 
         self.root = tk.Tk()
@@ -1036,6 +1041,7 @@ class App:
         if self.pair_win is not None and self.pair_win.winfo_exists():
             self.pair_win.lift()
             return
+        self.pair_reset = None
         w = tk.Toplevel(self.root)
         w.title("Pair a phone")
         w.resizable(False, False)
@@ -1060,6 +1066,9 @@ class App:
         ttk.Button(f, text="Copy long code", command=lambda: self.copy(self.pair_long.get())).pack(anchor="w", pady=(4, 0))
         self.pair_addr = tk.StringVar(value="")
         ttk.Label(f, textvariable=self.pair_addr).pack(anchor="w", pady=(12, 0))
+        self.pair_reset = ttk.Button(f, text="Change this address...",
+                                     command=self.reset_address, state="disabled")
+        self.pair_reset.pack(anchor="w", pady=(6, 0))
         self.pair_note = tk.StringVar(value="")
         ttk.Label(f, textvariable=self.pair_note, wraplength=460, foreground="#666").pack(anchor="w", pady=(4, 0))
         self.pair_win = w
@@ -1079,23 +1088,59 @@ class App:
         self.pair_long.set(snap["long"])
         if public:
             # The bridge is on the internet. The phone is not on this
-            # network, so the eight characters are not enough - the long
-            # code carries the address and the key.
-            self.pair_which.set("Paste this long code:")
+            # network, so it asks the pairing service where those eight
+            # characters are - the characters are all it needs, and they
+            # keep working after a restart because the address is fixed.
+            self.pair_which.set("Type these eight characters on the phone:")
             self.pair_long_label.set(
-                "This bridge is on the internet, so the phone cannot find "
-                "it by itself.\nPaste this long code - it carries the "
-                "address and the key:")
+                "If the phone cannot reach the pairing service, paste this "
+                "long code instead - it carries the address and the key:")
             self.pair_addr.set("Reachable at: " + public)
         else:
             self.pair_which.set("Type this code:")
             self.pair_long_label.set(
                 "If the phone cannot find the bridge, paste this long code:")
             self.pair_addr.set("Address: " + snap["address"] if snap["address"] else "")
+        if self.pair_reset is not None:
+            self.pair_reset.configure(state="normal" if public else "disabled")
         if snap["short"]:
-            self.pair_note.set("A new code is made each time the bridge starts. Stop and start the bridge for a new one.")
+            if public:
+                self.pair_note.set(
+                    "The address stays the same when the bridge restarts; the "
+                    "eight characters are new each time it starts. Change the "
+                    "address only if it stops working.")
+            else:
+                self.pair_note.set(
+                    "A new code is made each time the bridge starts. Stop and "
+                    "start the bridge for a new one.")
         else:
             self.pair_note.set("Waiting for the bridge to start... " + snap["message"])
+
+    def reset_address(self):
+        """Gives this install a different fixed address.
+
+        The token that names the tunnel lives in the bridge's own folder. It
+        is removed here, so the next start asks the service for a new one -
+        the old address stops working, and the phone has to pair again.
+        """
+        if not messagebox.askyesno(
+                "Change address",
+                "This bridge will be given a new internet address, and the "
+                "current one will stop working. A phone that is paired with it "
+                "will have to be paired again.\n\nChange it?",
+                parent=self.pair_win):
+            return
+        self.bridge.stop()
+        conf = os.path.join(os.path.expanduser("~"), ".autosongs", "tunnel.json")
+        try:
+            os.remove(conf)
+        except OSError:
+            pass
+        threading.Thread(target=self.bridge.start, daemon=True).start()
+        self.pair_short.set("--------")
+        self.pair_long.set("")
+        self.pair_addr.set("Getting a new address...")
+        self.pair_note.set("Waiting for the bridge to start...")
 
     # loop -----------------------------------------------------------
     def handle(self, action):
