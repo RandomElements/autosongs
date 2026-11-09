@@ -19,6 +19,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.lifecycleScope
 import com.autosongs.ytdl.data.AppSettings
 import com.autosongs.ytdl.data.FormatPreset
@@ -72,7 +73,14 @@ class SetupActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // The layout is drawn edge to edge (Android 15 and newer insist on
+        // it), so the system bars are painted over the app rather than
+        // beside it. Without this the button row at the bottom sits under
+        // the three-button navigation bar, and the phone's own buttons win
+        // the tap: "Next" looks there and does nothing.
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.activity_setup)
+        applyWindowInsets()
         settings = AppSettings.get(this)
 
         content = findViewById(R.id.setupContent)
@@ -91,6 +99,22 @@ class SetupActivity : AppCompatActivity() {
     }
 
     /**
+     * Keeps the walk-through clear of the phone's own bars.
+     *
+     * The bottom inset is what matters: a phone with three-button
+     * navigation puts a bar across the bottom of the screen, and an app
+     * drawn edge to edge has its own buttons sitting underneath it. The
+     * inset is the height of that bar, so padding the root by it lifts
+     * "Back / Skip / Next" back above the phone's buttons.
+     *
+     * The keyboard counts too - the folder name is typed in on the first
+     * step - so the larger of the two is used.
+     */
+    private fun applyWindowInsets() {
+        applyBarInsets(this, findViewById(R.id.setupRoot))
+    }
+
+    /**
      * Puts a step on screen.
      *
      * Each step is its own layout, inflated here, so that a step can be
@@ -100,7 +124,12 @@ class SetupActivity : AppCompatActivity() {
     private fun show(which: Step) {
         step = which
         content.removeAllViews()
-        val view = LayoutInflater.from(this).inflate(which.layout, content, true)
+        // The layout is inflated WITHOUT a parent and then added, so it
+        // is added exactly once. Inflating with the parent attached and
+        // adding it again is what Android refuses: the child already has
+        // a parent, and the activity dies before the first step is even
+        // on screen.
+        val view = LayoutInflater.from(this).inflate(which.layout, content, false)
         content.addView(view)
 
         titleLabel.setText(which.title)
@@ -199,53 +228,67 @@ class SetupActivity : AppCompatActivity() {
 
         group.removeAllViews()
         val presets = FormatPreset.values()
-        presets.forEachIndexed { index, preset ->
+
+        // The buttons are added first and only then is one of them
+        // ticked, because a RadioGroup only knows about buttons it has
+        // already been given: a button ticked before it is added leaves
+        // the group without a checked id, and then a second one can be
+        // ticked without the first clearing.
+        val ids = presets.map { preset ->
             val button = RadioButton(this)
             button.id = View.generateViewId()
             button.text = preset.label
             button.textSize = 15f
             button.setPadding(0, 24, 0, 24)
-            button.isChecked = preset == settings.preset
-            button.setOnClickListener {
-                settings.preset = preset
-                description.text = preset.description
-            }
             group.addView(button)
-            if (index == 0) description.text = preset.description
+            button.id
         }
 
         group.setOnCheckedChangeListener { _, checkedId ->
-            val button = group.findViewById<RadioButton>(checkedId) ?: return@setOnCheckedChangeListener
-            val preset = presets.firstOrNull { it.label == button.text.toString() }
-            if (preset != null) {
-                settings.preset = preset
-                description.text = preset.description
-            }
+            val index = ids.indexOf(checkedId)
+            if (index < 0) return@setOnCheckedChangeListener
+            settings.preset = presets[index]
+            description.text = presets[index].description
         }
+
+        val chosen = presets.indexOf(settings.preset).coerceAtLeast(0)
+        group.check(ids[chosen])
+        description.text = presets[chosen].description
     }
 
     /**
-     * The two permissions Android needs.
+     * The permissions Android needs, in the order they can actually be
+     * granted.
      *
-     * Both are on one screen because they are one question - "may this
+     * They are on one screen because they are one question - "may this
      * app watch and keep running" - and the user should not have to
      * remember what step two was about when they come back from the
      * first one.
+     *
+     * The app's own settings page comes first, and deliberately: from
+     * Android 13 on, an app that was installed from a file rather than
+     * from the Play Store has its notification access page disabled, and
+     * the switch that unlocks it - "Allow restricted settings" - lives
+     * only in the app settings page. Sending somebody to the
+     * notification-access list first leaves them staring at a greyed-out
+     * toggle with nothing to explain it.
      *
      * The status is read from Android rather than remembered, because the
      * user can revoke a permission outside the app and a stale "granted"
      * is worse than no answer at all.
      */
     private fun buildAccessStep() {
+        // Always open, even once both permissions are granted: it is the
+        // way back to "Allow restricted settings" if the user needs it.
+        findViewById<Button>(R.id.appInfoButton).setOnClickListener {
+            openAppInfo()
+        }
         findViewById<Button>(R.id.grantAccessButton).setOnClickListener {
             try {
                 startActivity(Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS))
             } catch (_: Throwable) {
                 Toast.makeText(this, R.string.setup_could_not_open, Toast.LENGTH_SHORT).show()
             }
-        }
-        findViewById<Button>(R.id.appInfoButton).setOnClickListener {
-            openAppInfo()
         }
         refreshAccessStatus()
     }
@@ -377,8 +420,6 @@ class SetupActivity : AppCompatActivity() {
         } else {
             getString(R.string.setup_battery_missing)
         }
-        findViewById<Button>(R.id.appInfoButton).visibility =
-            if (unrestricted) View.GONE else View.VISIBLE
     }
 
     private fun hasNotificationAccess(): Boolean =

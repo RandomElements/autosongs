@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        applyBarInsets(this, findViewById(R.id.mainRoot), dp(16))
         settings = AppSettings.get(this)
 
         bindPresets()
@@ -139,6 +140,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        // The walk-through can change the format while this screen waits
+        // behind it, so the spinner is re-read rather than trusted.
+        showSavedPreset()
         refreshStatus()
         maybeAutoStart()
     }
@@ -203,25 +207,44 @@ class MainActivity : AppCompatActivity() {
 
     private fun bindPresets() {
         val spinner = findViewById<Spinner>(R.id.presetSpinner)
-        val desc = findViewById<TextView>(R.id.presetDescription)
         val presets = FormatPreset.values()
 
         spinner.adapter = ArrayAdapter(
             this, android.R.layout.simple_spinner_dropdown_item, presets.map { it.label }
         )
-        spinner.setSelection(presets.indexOf(settings.preset).coerceAtLeast(0))
-        desc.text = presets[spinner.selectedItemPosition.coerceAtLeast(0)].description
+        showSavedPreset()
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
                 settings.preset = presets[position]
-                desc.text = presets[position].description
+                findViewById<TextView>(R.id.presetDescription).text =
+                    presets[position].description
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
+    }
+
+    /**
+     * Points the format spinner at what is actually saved.
+     *
+     * The spinner is built once, in onCreate, and this screen is created
+     * *before* the first-run walk-through draws over it. So somebody who
+     * picks MP3 in the setup would come back to a spinner still showing
+     * the M4A that was saved when the home screen was built - the file
+     * they get would be MP3, but the app would say otherwise, which is
+     * indistinguishable from the choice being thrown away. Re-reading it
+     * on resume keeps the two in step.
+     */
+    private fun showSavedPreset() {
+        val spinner = findViewById<Spinner>(R.id.presetSpinner)
+        val presets = FormatPreset.values()
+        val index = presets.indexOf(settings.preset).coerceAtLeast(0)
+
+        if (spinner.selectedItemPosition != index) spinner.setSelection(index)
+        findViewById<TextView>(R.id.presetDescription).text = presets[index].description
     }
 
     private fun bindToggles() {
@@ -241,6 +264,8 @@ class MainActivity : AppCompatActivity() {
     private fun bindButtons() {
         findViewById<Button>(R.id.startButton).setOnClickListener {
             requestNotificationPermissionIfNeeded()
+            // Restart the watcher so it picks up the current preset & settings
+            WatcherService.stop(this)
             WatcherService.start(this)
             refreshStatus()
         }

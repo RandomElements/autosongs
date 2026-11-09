@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About — AutoSongs</title>
-<meta name="description" content="What AutoSongs is, why it exists, how track matching works, what it is built from, and the rights notice. Version 1.4.26, Android 8.0+.">
+<meta name="description" content="What AutoSongs is, why it exists, how track matching works, what it is built from, and the rights notice. Version 1.4.27, Android 8.0+.">
 <link rel="canonical" href="https://autosongs.example/about.html">
 <meta property="og:site_name" content="AutoSongs">
 <meta property="og:type" content="website">
@@ -36,7 +36,7 @@
       <a href="install.html">Install</a>
       <a href="about.html" aria-current="page">About</a>
       <a href="about.html#support">Support</a>
-      <a href="downloads/AutoSongs-1.4.26.apk" class="btn btn-primary btn-sm" download>Download&nbsp;v1.4.26</a>
+      <a href="downloads/AutoSongs-1.4.27.apk" class="btn btn-primary btn-sm" download>Download&nbsp;v1.4.27</a>
     </nav>
   </div>
 </header>
@@ -105,11 +105,11 @@
       <h2 id="release-title">The current release</h2>
       <div class="table-wrap">
         <table>
-          <caption class="muted small" style="padding:.6rem 1rem; text-align:left">Release 1.4.26</caption>
+          <caption class="muted small" style="padding:.6rem 1rem; text-align:left">Release 1.4.27</caption>
           <tbody>
-            <tr><th scope="row">Version</th><td>1.4.26 (versionCode 171)</td></tr>
+            <tr><th scope="row">Version</th><td>1.4.27 (versionCode 172)</td></tr>
             <tr><th scope="row">Requires</th><td>Android 8.0 (API 26) or newer</td></tr>
-            <tr><th scope="row">App download</th><td><a href="downloads/AutoSongs-1.4.26.apk" download>AutoSongs-1.4.26.apk</a></td></tr>
+            <tr><th scope="row">App download</th><td><a href="downloads/AutoSongs-1.4.27.apk" download>AutoSongs-1.4.27.apk</a></td></tr>
             <tr><th scope="row">Bridge app</th><td><a href="downloads/AutoSongsBridge-1.4.26.apk" download>AutoSongsBridge-1.4.26.apk</a></td></tr>
             <tr><th scope="row">Bridge launchers</th><td><a href="downloads/AutoSongsBridgeSetup.exe" download>AutoSongsBridgeSetup.exe</a> · <a href="downloads/autosongs-bridge.cmd" download>autosongs-bridge.cmd</a> · <a href="downloads/autosongs-bridge.sh" download>autosongs-bridge.sh</a></td></tr>
             <tr><th scope="row">Machine-readable version data</th><td><a href="version.json">version.json</a></td></tr>
@@ -117,17 +117,26 @@
         </table>
 
         <div class="notice" style="margin-top:1.5rem">
-          <p class="mb-0"><strong>What is new in 1.4.26.</strong></p>
-          <p><strong>The bridge explains itself when a tunnel cannot be
-          made.</strong> Cloudflare limits how many quick tunnels one network may
-          make in a short time, and a person who starts the bridge a few times in
-          a row runs into that. Until now the only thing they were told was that
-          the tunnel stopped before it was ready &mdash; which says nothing about
-          what to do. The bridge now reads what Cloudflare said and explains it:
-          wait a minute and start it again. It does the same for the two other
-          things that can stop a tunnel &mdash; cloudflared not being installed
-          where the bridge can find it, and cloudflared needing to be signed
-          in.</p>
+          <p class="mb-0"><strong>What is new in 1.4.27.</strong></p>
+          <p><strong>Setup no longer hides behind the phone's own bars.</strong>
+          From Android 15 the app is drawn edge to edge, which put the setup's
+          Back / Skip / Next row underneath the three-button navigation bar and
+          the screen title underneath the clock &mdash; a tap on &ldquo;Next&rdquo;
+          went to the phone's button instead of the app's. The walk-through, the
+          home screen and the settings screen now pad themselves by the status
+          and navigation bar height.</p>
+          <p><strong>The permissions step starts with the app settings page.</strong>
+          On Android 13 and newer an app installed from a file rather than the
+          Play Store has notification access locked until &ldquo;Allow restricted
+          settings&rdquo; is turned on, and that switch lives only in the app's own
+          settings page. Sending someone to the notification-access list first
+          left them looking at a greyed-out toggle with nothing to explain it.</p>
+          <p><strong>And the format you pick is the format you get.</strong> The
+          home screen was built before the walk-through drew over it and never
+          re-read the saved answer, so choosing MP3 (or Opus, or anything but
+          M4A) came back as M4A when the walk-through finished. The file was
+          always right; the label was not. It is re-read now, and the setup's own
+          radio list ticks the saved choice instead of always ticking the first.</p>
           <p class="mb-0"><strong>And from 1.4.24, still here:</strong> the first
           run is a walk-through (where the songs go, what kind of file to save,
           the permissions Android needs, and a summary, each answer saved as it
@@ -199,7 +208,7 @@
   <section class="cta-band tight">
     <div class="container">
       <h2 class="mt-0">Give it a listen — and a keep</h2>
-      <a class="btn btn-primary" href="downloads/AutoSongs-1.4.26.apk" download>Download AutoSongs 1.4.26</a>
+      <a class="btn btn-primary" href="downloads/AutoSongs-1.4.27.apk" download>Download AutoSongs 1.4.27</a>
       <a class="btn btn-ghost" href="install.html">Install guide</a>
     </div>
   </section>
@@ -227,7 +236,7 @@
       <div>
         <h2>Downloads</h2>
         <ul>
-          <li><a href="downloads/AutoSongs-1.4.26.apk" download>AutoSongs 1.4.26 (APK)</a></li>
+          <li><a href="downloads/AutoSongs-1.4.27.apk" download>AutoSongs 1.4.27 (APK)</a></li>
           <li><a href="downloads/AutoSongsBridge-1.4.26.apk" download>Bridge app 1.4.26 (APK)</a></li>
           <li><a href="downloads/AutoSongsBridgeSetup.exe" download>Windows bridge setup</a></li>
           <li><a href="downloads/autosongs-bridge.cmd" download>Windows launcher (.cmd)</a></li>
@@ -247,7 +256,7 @@
     </div>
     <div class="footer-bottom">
       <span>© <span class="year" data-year>2026</span> AutoSongs &middot; autosongs.example</span>
-      <span>Android 8.0+ &middot; v1.4.26 (build 171)</span>
+      <span>Android 8.0+ &middot; v1.4.27 (build 172)</span>
     </div>
   </div>
 </footer>

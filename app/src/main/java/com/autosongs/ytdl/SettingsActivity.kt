@@ -92,6 +92,7 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        applyBarInsets(this, findViewById(R.id.settingsRoot), dp(16))
         settings = AppSettings.get(this)
 
         host = findViewById<EditText>(R.id.hostInput)

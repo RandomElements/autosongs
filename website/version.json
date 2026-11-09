@@ -1,9 +1,9 @@
 {
-  "versionName": "1.4.26",
-  "versionCode": 171,
-  "sha256": "8ed25b338a63e78689eba931d60ea2d26f5b72f1be51c62d2f756a646d5164f6",
-  "sizeBytes": 55818282,
-  "apkUrl": "https://autosongs.example/downloads/AutoSongs-1.4.26.apk",
+  "versionName": "1.4.27",
+  "versionCode": 172,
+  "sha256": "eabbeb38ed02fbbcd1594ce1f84fb51219a0bf44aa0ae7ee2db30ba873612962",
+  "sizeBytes": 55819354,
+  "apkUrl": "https://autosongs.example/downloads/AutoSongs-1.4.27.apk",
   "bridgeApkUrl": "https://autosongs.example/downloads/AutoSongsBridge-1.4.26.apk",
   "bridgeSha256": "456add9adea9d25a1f9a0ee648441270b51cb25e2d5aedc54defcfd3f2a11626",
   "bridgeSizeBytes": 55452018,
@@ -14,14 +14,14 @@
   "bridgeCmdUrl": "https://autosongs.example/downloads/autosongs-bridge.cmd",
   "bridgeCoreVersion": "1.4.3",
   "bridgeCoreUrl": "https://autosongs.example/ytbridge.py",
-  "bridgeCoreSha256": "6372c24312eadb8f064c56eb56e8db58e8d6a28b229464696151fd965b6ea649",
-  "bridgeCoreSizeBytes": 107048,
-  "notes": "The bridge now explains what went wrong when a tunnel cannot be made, and a phone can claim a pairing code on a plain network again - the claim used to fail with an error because of a missing variable.",
-  "published": "2026-11-08T11:52:36Z",
+  "bridgeCoreSha256": "8323c7a2a4c96cda2921e55aa5e976f677ac951e3f4001390b908a3ac6a57ed1",
+  "bridgeCoreSizeBytes": 107044,
+  "notes": "The setup is clear of the status and navigation bars, opens the app settings page first so 'Allow restricted settings' can unlock notification access, and shows the format you actually chose instead of falling back to M4A.",
+  "published": "2026-11-09T02:07:58Z",
   "hosts": [
     "https://autosongs.example"
   ],
-  "apkSha256": "8ed25b338a63e78689eba931d60ea2d26f5b72f1be51c62d2f756a646d5164f6",
+  "apkSha256": "eabbeb38ed02fbbcd1594ce1f84fb51219a0bf44aa0ae7ee2db30ba873612962",
   "setupExeSha256": "8de2f9fec4284c3bbc71da494dee3a46552af6a86194eddba286233fec863c8f",
   "setupExeSizeBytes": 85445326
 }

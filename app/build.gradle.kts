@@ -14,8 +14,8 @@ android {
         applicationId = "com.autosongs"
         minSdk = 26
         targetSdk = 35
-        versionCode = 171
-        versionName = "1.4.26"
+        versionCode = 172
+        versionName = "1.4.27"
 
         ndk {
             // The Python runtime ships as a native library, so the APK only

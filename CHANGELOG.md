@@ -1,5 +1,31 @@
 # Changelog
 
+## 1.4.27 — Setup clear of the system bars, and the format you actually chose
+
+**The setup no longer hides behind the phone's own controls.** From
+Android 15 the app is drawn edge to edge, so the three-button navigation
+bar sat over the walk-through's Back / Skip / Next row and the clock sat
+over the title — a tap on "Next" went to the phone's back button instead.
+The walk-through, the home screen and the settings screen now pad
+themselves by the status bar, navigation bar and display-cutout insets
+(and by the keyboard, since the folder name is typed in on the first
+step).
+
+**The permissions step opens with the app settings page.** On Android 13
+and newer an app installed from a file rather than the Play Store has
+notification access locked until "Allow restricted settings" is turned
+on, and that switch lives only in the app's own settings page. Being sent
+to the notification-access list first meant looking at a greyed-out
+toggle with nothing to explain it. App settings, then notification
+access, then the battery exemption.
+
+**The format chosen in the first run is the format the home screen
+shows.** The spinner was built before the walk-through covered it and was
+never re-read, so MP3 (or Opus, or anything but M4A) came back as M4A once
+the walk-through finished. The file was always right; the label was not.
+The saved format is re-read on resume, and the setup's own radio list
+ticks the saved choice instead of always ticking the first.
+
 ## 1.4.24 — A proper setup, and a bridge that works from anywhere
 
 **The setup is a walk-through now.** The first run used to show a welcome

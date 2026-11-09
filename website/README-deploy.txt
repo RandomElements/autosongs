@@ -32,15 +32,15 @@ Contents
   site.webmanifest      PWA manifest (icons + theme colors).
   robots.txt            Allow all + sitemap pointer.
   sitemap.xml           The five indexable pages (404 excluded on purpose).
-  version.json          Machine-readable release data: versionName 1.4.23,
-                        versionCode 167, bridge core 1.3.24, canonical download
+  version.json          Machine-readable release data: versionName 1.4.27,
+                        versionCode 172, bridge core 1.4.3, canonical download
                         URLs, and measured release/core hashes and sizes.
   ytbridge.py           The bridge core fetched by the desktop launchers and
                         offered by the manual install option.
   downloads/            The five built release artifacts referenced by the
                         pages and version.json:
-                          downloads/AutoSongs-1.4.23.apk
-                          downloads/AutoSongsBridge-1.4.23.apk
+                          downloads/AutoSongs-1.4.27.apk
+                          downloads/AutoSongsBridge-1.4.26.apk
                           downloads/AutoSongsBridgeSetup.exe
                           downloads/autosongs-bridge.sh
                           downloads/autosongs-bridge.cmd
@@ -61,9 +61,10 @@ Deployment
 
 Updating the release version
 ----------------------------
-Current release: 1.4.23 (versionCode 167). On a new release: find/replace
-"1.4.23" across the HTML files, version.json and sitemap lastmod dates, rename
+Current release: 1.4.27 (versionCode 172). The bridge app is still 1.4.26
+(it did not change). On a new release: find/replace
+"1.4.27" across the HTML files, version.json and sitemap lastmod dates, rename
 the download targets, and rebuild assets if the brand art changes.
 
-Master artwork: ../logo.jpg (2048x2048). Web derivatives were
+Master artwork: c:/coding/autosongs/logo.jpg (2048x2048). Web derivatives were
 generated with Pillow; regenerate with an LANCZOS resize for any new size.
