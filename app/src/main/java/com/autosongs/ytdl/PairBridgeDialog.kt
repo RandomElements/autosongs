@@ -12,6 +12,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.autosongs.ytdl.bridge.BridgeDiscovery
 import com.autosongs.ytdl.bridge.BridgeVersion
+import com.autosongs.ytdl.bridge.OnlinePairing
 import com.autosongs.ytdl.bridge.PairCode
 import com.autosongs.ytdl.data.AppSettings
 import kotlinx.coroutines.launch
@@ -34,7 +35,7 @@ object PairBridgeDialog {
 
         // Where the bridge for the computer can be fetched.
         val page = BridgeVersion.HOSTS.firstOrNull()
-            ?: "https://autosongs.example"
+            ?: "https://autosongs.org"
         link.text = page
         link.setOnClickListener {
             try {
@@ -67,6 +68,25 @@ object PairBridgeDialog {
                 val owner = activity as? LifecycleOwner ?: return@setOnClickListener
                 status.text = activity.getString(R.string.looking_for_the_bridge)
                 owner.lifecycleScope.launch {
+                    // The service is asked first. It answers in a second, and
+                    // it works from anywhere - a bridge behind a router, on a
+                    // phone network, or in another country. A bridge on this
+                    // same network is still found below, so a bridge with no
+                    // tunnel, or a phone with no internet, pairs as before.
+                    val online = OnlinePairing.resolve(code)
+                    if (online != null) {
+                        settings.bridgeHost = online.host
+                        settings.bridgePort = online.port
+                        settings.bridgeToken = online.token
+                        settings.bridgeScheme = online.scheme
+                        settings.bridgePath = online.path
+                        settings.bridgeMode = AppSettings.BRIDGE_REMOTE
+                        val said = activity.getString(R.string.paired_with, online.host)
+                        status.text = said
+                        Toast.makeText(activity, said, Toast.LENGTH_LONG).show()
+                        dialog.dismiss()
+                        return@launch
+                    }
                     val found = BridgeDiscovery.find(code)
                     if (found == null) {
                         status.text = activity.getString(R.string.bridge_not_found)
@@ -80,6 +100,8 @@ object PairBridgeDialog {
                     settings.bridgeHost = found.host
                     settings.bridgePort = found.port
                     settings.bridgeToken = token
+                    settings.bridgeScheme = "http"
+                    settings.bridgePath = ""
                     settings.bridgeMode = AppSettings.BRIDGE_REMOTE
                     val said = activity.getString(R.string.paired_with, found.host)
                     status.text = said

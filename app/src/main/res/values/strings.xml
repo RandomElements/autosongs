@@ -46,7 +46,7 @@
     <string name="pair_code_example">The eight characters the bridge shows</string>
     <string name="find_and_pair">Find and pair</string>
     <string name="looking_for_the_bridge">Looking for the bridge…</string>
-    <string name="bridge_not_found">No bridge with that code answered. Are the phone and the computer on the same network?</string>
+    <string name="bridge_not_found">No bridge is running with that code. Start the bridge on the computer and check that it shows the same eight characters.</string>
     <string name="pairing_failed">The bridge would not give a key. Check the code and try again.</string>
     <string name="save_to_heading">Where the songs are kept</string>
     <string name="save_to_phone">Download to this phone</string>

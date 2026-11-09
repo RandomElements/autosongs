@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.autosongs.ytdl.bridge.BridgeClient
 import com.autosongs.ytdl.bridge.CookieStore
+import com.autosongs.ytdl.bridge.OnlinePairing
+import com.autosongs.ytdl.bridge.PairCode
 import com.autosongs.ytdl.bridge.PairingCode
 import com.autosongs.ytdl.data.AppSettings
 import com.autosongs.ytdl.data.MusicApps
@@ -129,6 +131,40 @@ class SettingsActivity : AppCompatActivity() {
             if (code.isEmpty()) {
                 Toast.makeText(this, R.string.pairing_nothing,
                     Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            // Eight characters is the bridge's short code, and the pairing
+            // service is what turns it into an address - that is what makes
+            // it work from another network. A long code is read here, as
+            // before, and carries everything itself.
+            val short = try {
+                PairCode.normalize(code).takeIf { it.length == 8 }
+            } catch (_: IllegalArgumentException) {
+                null
+            }
+            if (short != null) {
+                lifecycleScope.launch {
+                    val online = OnlinePairing.resolve(short)
+                    if (online == null) {
+                        Toast.makeText(this@SettingsActivity,
+                            getString(R.string.bridge_not_found), Toast.LENGTH_LONG).show()
+                        return@launch
+                    }
+                    settings.bridgeHost = online.host
+                    settings.bridgePort = online.port
+                    settings.bridgeToken = online.token
+                    settings.bridgeScheme = online.scheme
+                    settings.bridgePath = online.path
+                    settings.bridgeMode = AppSettings.BRIDGE_REMOTE
+                    host.setText(online.host)
+                    port.setText(online.port.toString())
+                    token.setText(online.token)
+                    embeddedSwitch.isChecked = false
+                    applyMode()
+                    Toast.makeText(this@SettingsActivity,
+                        getString(R.string.paired_with, online.host),
+                        Toast.LENGTH_LONG).show()
+                }
                 return@setOnClickListener
             }
             try {
