@@ -53,7 +53,7 @@ import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
-BRIDGE_VERSION = "1.4.6"
+BRIDGE_VERSION = "1.4.7"
 
 # Where the newest bridge is published. The bridge checks these on its own
 # and replaces itself, so a fix does not need the phone to install anything.
@@ -1013,6 +1013,22 @@ def start_named_tunnel(port, conf):
     raise RuntimeError(_tunnel_failure(said))
 
 
+def tunnel_points_elsewhere(port, conf):
+    """Whether the fixed address was made for a different port than this one.
+
+    The address is a name for one port on this machine - that is what was
+    asked for when it was made. A bridge on another port is not behind it,
+    and the address answers "bad gateway" no matter how healthy the bridge
+    looks, which is a confusing thing to hunt. So the mismatch is said out
+    loud instead of being papered over.
+    """
+    try:
+        made_for = int(conf.get("port") or 0)
+    except (TypeError, ValueError):
+        return False
+    return bool(made_for) and made_for != int(port)
+
+
 def start_tunnel(port, fixed=True):
     """Opens a hole to the internet and returns the address of it.
 
@@ -1023,6 +1039,15 @@ def start_tunnel(port, fixed=True):
     """
     if fixed:
         conf = ask_for_tunnel(port)
+        if conf and tunnel_points_elsewhere(port, conf):
+            print("[bridge] this install's fixed address %s forwards to port "
+                  "%s, but this bridge is on %d - the address will not reach "
+                  "it. Start the bridge on port %s, or run it once with "
+                  "--tunnel-reset to get an address for port %d."
+                  % (conf.get("hostname"), conf.get("port"), port,
+                     conf.get("port"), port), flush=True)
+            print("[bridge] using a quick tunnel instead", flush=True)
+            return start_quick_tunnel(port)
         if conf:
             try:
                 return start_named_tunnel(port, conf)

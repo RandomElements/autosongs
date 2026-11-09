@@ -145,9 +145,15 @@ if not ytbridge.find_cloudflared():
 
 print("starting the bridge with a tunnel...")
 log = open(LOG, "w", encoding="utf-8", errors="replace")
+# The bridge keeps its fixed address and its key under the home folder. A
+# test must not borrow the install's address - it would then be proving that
+# address rather than its own tunnel - so the run gets a home of its own.
+import tempfile
+HOME = tempfile.mkdtemp(prefix="bridgetest_")
+env = dict(os.environ, USERPROFILE=HOME, HOME=HOME, APPDATA=HOME)
 proc = subprocess.Popen(
     [sys.executable, BRIDGE, "--pair", "--tunnel", "--port", str(PORT)],
-    stdout=log, stderr=subprocess.STDOUT, cwd=os.path.dirname(BRIDGE),
+    stdout=log, stderr=subprocess.STDOUT, cwd=os.path.dirname(BRIDGE), env=env,
 )
 try:
     url = None
@@ -156,7 +162,7 @@ try:
     deadline = time.time() + 120
     while time.time() < deadline:
         text = open(LOG, encoding="utf-8", errors="replace").read()
-        found = re.search(r"reachable at (https://\S+)", text)
+        found = re.search(r"(?:reachable from outside at:|reachable at)\s*(https://\S+)", text)
         if found:
             url = found.group(1)
             code = re.search(
