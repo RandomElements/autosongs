@@ -1,0 +1,13 @@
+{
+  "listen": "127.0.0.1:8790",
+  "state": "/autosongs/paird/state.json",
+  "pair_ttl_minutes": 15,
+  "max_tunnels_per_ip": 4,
+  "pair_per_ten_minutes": 12,
+  "cloudflare": {
+    "token": "",
+    "account": "",
+    "zone": "",
+    "prefix": "bridge.autosongs.org"
+  }
+}

@@ -47,10 +47,13 @@ import threading
 import time
 import shutil
 import uuid
+import secrets
+import urllib.error
+import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import parse_qs, urlparse
 
-BRIDGE_VERSION = "1.4.3"
+BRIDGE_VERSION = "1.4.4"
 
 # Where the newest bridge is published. The bridge checks these on its own
 # and replaces itself, so a fix does not need the phone to install anything.
@@ -59,7 +62,7 @@ BRIDGE_VERSION = "1.4.3"
 # again. The bridge takes the newest version any source has, and never
 # replaces itself with anything older than what is running here.
 _UPDATE_URLS_DEFAULT = [
-    "https://autosongs.example/ytbridge.py"
+    "https://autosongs.org/ytbridge.py"
 ]
 UPDATE_URLS = [u.strip() for u in
                os.environ.get("YTBRIDGE_UPDATE_URLS", "").split(",") if u.strip()] \
@@ -771,7 +774,7 @@ def find_cloudflared():
 TUNNEL_URL = re.compile(r"https://[a-zA-Z0-9-]+\.trycloudflare\.com")
 
 
-def start_tunnel(port):
+def start_quick_tunnel(port):
     """Opens a hole to the internet and returns the address of it.
 
     The bridge itself stays on this machine and listens only where it
@@ -859,6 +862,239 @@ def _tunnel_failure(said):
                 "bridge, or in %s, and start it again."
                 % os.path.join(os.path.expanduser("~"), ".autosongs"))
     return "the tunnel stopped before it was ready"
+
+
+# ---- the fixed address, and the eight characters ---------------------------
+#
+# A quick tunnel is a new address every start, so a code that carries the
+# address dies with it. With an account-backed tunnel the address is fixed:
+# cloudflared keeps a named tunnel of its own, the server points a name at it
+# once, and a restart lands on the same name.
+#
+# That name is then all the bridge has to remember, and the eight characters
+# the user types are enough to find it - the phone asks the server which
+# bridge owns those characters, and is given the address and the key while
+# this bridge is running.
+SERVER_API = os.environ.get("YTBRIDGE_PAIR_URL", "https://autosongs.org/api/paird")
+TUNNEL_CONF = os.path.join(os.path.expanduser("~"), ".autosongs", "tunnel.json")
+REGISTERED = threading.Event()          # set while the code is advertised
+PAIR_SESSION = {}
+
+
+def read_tunnel_conf():
+    """The address this install already owns, if it has one."""
+    try:
+        with open(TUNNEL_CONF, "r", encoding="utf-8") as handle:
+            return json.load(handle)
+    except (OSError, ValueError):
+        return {}
+
+
+def write_tunnel_conf(data):
+    try:
+        os.makedirs(os.path.dirname(TUNNEL_CONF), exist_ok=True)
+        with open(TUNNEL_CONF, "w", encoding="utf-8") as handle:
+            json.dump(data, handle, indent=2)
+        try:
+            os.chmod(TUNNEL_CONF, 0o600)
+        except OSError:
+            pass
+    except OSError as exc:
+        print("[bridge] could not save the tunnel: %s" % exc, flush=True)
+
+
+def forget_tunnel():
+    """Forgets the fixed address, so the next start asks for a new one."""
+    try:
+        os.remove(TUNNEL_CONF)
+        return True
+    except OSError:
+        return False
+
+
+def _post_json(url, payload, timeout=20):
+    """POST to the pairing service. Returns (status, body-as-dict)."""
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        url, data=data, method="POST",
+        headers={"Content-Type": "application/json",
+                 "User-Agent": "autosongs-bridge/%s" % BRIDGE_VERSION},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            raw = resp.read().decode("utf-8", "replace")
+            return resp.status, json.loads(raw or "{}")
+    except urllib.error.HTTPError as exc:
+        raw = exc.read().decode("utf-8", "replace")
+        try:
+            return exc.code, json.loads(raw or "{}")
+        except ValueError:
+            return exc.code, {"error": raw[:200]}
+    except Exception as exc:  # noqa: BLE001 - the network is allowed to be down
+        return 0, {"error": str(exc)}
+
+
+def ask_for_tunnel(port):
+    """Makes a fixed address for this install, once.
+
+    The token that makes the tunnel is kept on this machine afterwards, so a
+    restart reuses the address instead of asking for a new one.
+    """
+    conf = read_tunnel_conf()
+    if conf.get("token") and conf.get("hostname"):
+        return conf
+    status, body = _post_json(SERVER_API + "/tunnel/new",
+                              {"port": int(port)}, timeout=30)
+    if status != 200 or not body.get("token"):
+        print("[bridge] no fixed address: %s"
+              % body.get("error", "the pairing service did not answer"), flush=True)
+        return {}
+    conf = {
+        "hostname": body["hostname"],
+        "token": body["token"],
+        "rotateKey": body.get("rotateKey", ""),
+        "port": int(port),
+    }
+    write_tunnel_conf(conf)
+    print("[bridge] this install now has a fixed address: %s"
+          % conf["hostname"], flush=True)
+    return conf
+
+
+def start_named_tunnel(port, conf):
+    """Runs the named tunnel and returns its address.
+
+    The address does not come from cloudflared this time - it is the one this
+    install already owns - so cloudflared only has to be up. It is judged up
+    when it says it registered a connection, or when it is still running
+    after twenty seconds, because a working tunnel that has been quiet for a
+    moment must not be thrown away.
+    """
+    exe = find_cloudflared()
+    if not exe:
+        raise RuntimeError(
+            "cloudflared was not found. Put cloudflared.exe beside the "
+            "bridge, or in %s, and start it again."
+            % os.path.join(os.path.expanduser("~"), ".autosongs"))
+    cmd = [exe, "tunnel", "--no-autoupdate", "run", "--token", conf["token"]]
+    print("[bridge] using the fixed address %s" % conf["hostname"], flush=True)
+    proc = subprocess.Popen(
+        cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        text=True, encoding="utf-8", errors="replace", bufsize=1,
+    )
+
+    ready = threading.Event()
+    said = []
+
+    def watch():
+        try:
+            for raw in proc.stdout:
+                line = raw.rstrip("\r\n")
+                if line.strip():
+                    print("[tunnel] " + line, flush=True)
+                    said.append(line)
+                low = line.lower()
+                if "registered tunnel connection" in low or "connection registered" in low:
+                    ready.set()
+        except Exception:  # noqa: BLE001 - the pipe closing is normal
+            pass
+
+    threading.Thread(target=watch, daemon=True).start()
+
+    for _ in range(40):
+        if ready.is_set():
+            return proc, conf["hostname"]
+        if proc.poll() is not None:
+            raise RuntimeError(_tunnel_failure(said))
+        time.sleep(0.5)
+
+    if proc.poll() is None:
+        return proc, conf["hostname"]
+    raise RuntimeError(_tunnel_failure(said))
+
+
+def start_tunnel(port, fixed=True):
+    """Opens a hole to the internet and returns the address of it.
+
+    With a fixed address the same eight characters keep working after a
+    restart. Without one - no account on the server, or the service is
+    unreachable - it falls back to a quick tunnel, which works straight away
+    and hands out a new address every time.
+    """
+    if fixed:
+        conf = ask_for_tunnel(port)
+        if conf:
+            try:
+                return start_named_tunnel(port, conf)
+            except RuntimeError as exc:
+                print("[bridge] %s" % exc, flush=True)
+                print("[bridge] falling back to a quick tunnel", flush=True)
+    return start_quick_tunnel(port)
+
+
+def register_pair_code(code, public_url, key):
+    """Tells the pairing service where this bridge is, and keeps saying so.
+
+    The phone only knows eight characters. The service turns them into an
+    address, and it only answers while this thread is beating - so a bridge
+    that is closed, crashed or killed stops being reachable instead of
+    pointing at nothing.
+    """
+    if not code or not public_url:
+        return
+    claim = secrets.token_hex(16)
+    PAIR_SESSION.update({"code": code, "claim": claim, "url": public_url,
+                         "stop": threading.Event()})
+
+    def run():
+        delay = 300
+        while not PAIR_SESSION["stop"].is_set():
+            status, body = _post_json(SERVER_API + "/bridge/register",
+                                      {"code": code, "url": public_url,
+                                       "key": key, "claim": claim})
+            if status == 200:
+                delay = max(60, int(body.get("ttlSeconds", 900)) // 3)
+                print("[bridge] the code %s works from any network while the "
+                      "bridge runs" % code, flush=True)
+                REGISTERED.set()
+                break
+            print("[bridge] could not advertise the code: %s"
+                  % body.get("error", status), flush=True)
+            PAIR_SESSION["stop"].wait(30)
+            if PAIR_SESSION["stop"].is_set():
+                return
+
+        while not PAIR_SESSION["stop"].wait(delay):
+            status, body = _post_json(SERVER_API + "/bridge/beat",
+                                      {"code": code, "claim": claim})
+            if status == 200:
+                continue
+            if status == 404:
+                REGISTERED.clear()
+                status, body = _post_json(SERVER_API + "/bridge/register",
+                                          {"code": code, "url": public_url,
+                                           "key": key, "claim": claim})
+                if status == 200:
+                    REGISTERED.set()
+                    continue
+            # Not fatal: the bridge still works for anybody holding the long
+            # code, and the code is advertised again on the next beat that
+            # gets through.
+            print("[bridge] the pairing service did not answer: %s"
+                  % body.get("error", status), flush=True)
+
+    threading.Thread(target=run, daemon=True).start()
+
+
+def stop_pairing():
+    """Withdraws the code, so it stops pointing at a bridge that is closing."""
+    code = PAIR_SESSION.get("code")
+    if not code:
+        return
+    PAIR_SESSION["stop"].set()
+    _post_json(SERVER_API + "/bridge/drop",
+               {"code": code, "claim": PAIR_SESSION.get("claim", "")}, timeout=5)
+
 
 
 def is_ipv4(host):
@@ -1113,13 +1349,16 @@ def print_pairing_banner(host, port, secret, public_url=""):
         print("", flush=True)
         print("      %s" % public_url, flush=True)
         print("", flush=True)
-        print("  On the phone:  AutoSongs - Pair remote bridge - paste this", flush=True)
-        print("  long code. It carries the address and the key:", flush=True)
+        print("  On the phone:  AutoSongs - Pair remote bridge - type these", flush=True)
+        print("  eight characters. They work from any network, and they keep", flush=True)
+        print("  working after the bridge restarts:", flush=True)
+        print("", flush=True)
+        print("      %s" % (PAIR_CODE or "--------"), flush=True)
+        print("", flush=True)
+        print("  If the phone cannot reach the pairing service, paste this", flush=True)
+        print("  long code instead - it carries the address and the key:", flush=True)
         print("", flush=True)
         print("      %s" % code, flush=True)
-        print("", flush=True)
-        print("  The phone cannot find this bridge by itself - it is not on", flush=True)
-        print("  the same network - so the long code is how it is reached.", flush=True)
     else:
         print("  On the phone:  AutoSongs - Pair remote bridge - type this code:", flush=True)
         print("", flush=True)
@@ -2557,8 +2796,11 @@ def main():
     ap.add_argument("--tunnel", action="store_true",
                     help="open a tunnel to the internet with cloudflared, so "
                          "a phone that is not on this network can reach this "
-                         "bridge. The address it hands out is put in the "
-                         "pairing code.")
+                         "bridge. It asks the pairing service for a fixed "
+                         "address once, so the address survives a restart.")
+    ap.add_argument("--tunnel-reset", action="store_true",
+                    help="forget this install's fixed address and ask for a "
+                         "new one on the next start")
     args = ap.parse_args()
 
     # With --pair the bridge makes itself a key and shows the code that
@@ -2574,6 +2816,12 @@ def main():
     # The tunnel is opened first, so the address it hands out can go
     # into the pairing code. The bridge itself is listening on this
     # machine either way; the tunnel is what the internet talks to.
+    if args.tunnel_reset:
+        if forget_tunnel():
+            print("[bridge] the fixed address has been forgotten", flush=True)
+        else:
+            print("[bridge] there was no fixed address to forget", flush=True)
+
     public_url = str(args.public_url or "").strip()
     tunnel_proc = None
     if args.tunnel:
@@ -2592,7 +2840,11 @@ def main():
     if args.pair:
         print_pairing_banner(lan_address(), args.port, token,
                              public_url=public_url)
-        if not public_url:
+        if public_url:
+            # The phone types these eight characters; the service says where
+            # this bridge is, and only while this bridge is beating.
+            register_pair_code(PAIR_CODE, public_url, token)
+        else:
             start_pair_responder(args.port)
 
     threading.Thread(target=update_watcher, daemon=True).start()
@@ -2604,6 +2856,7 @@ def main():
     finally:
         # The tunnel is a child process. It stops with the bridge, so a
         # closed bridge does not leave a hole open behind it.
+        stop_pairing()
         if tunnel_proc is not None:
             try:
                 tunnel_proc.terminate()

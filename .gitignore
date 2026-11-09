@@ -35,3 +35,6 @@ website/downloads/*
 .vscode/
 .DS_Store
 Thumbs.db
+
+# The pairing service is built, not committed.
+tools/paird/paird.linux-amd64

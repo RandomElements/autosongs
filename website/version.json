@@ -12,11 +12,11 @@
   "bridgeSetupExeSizeBytes": 85445326,
   "bridgeShUrl": "https://autosongs.example/downloads/autosongs-bridge.sh",
   "bridgeCmdUrl": "https://autosongs.example/downloads/autosongs-bridge.cmd",
-  "bridgeCoreVersion": "1.4.3",
+  "bridgeCoreVersion": "1.4.4",
   "bridgeCoreUrl": "https://autosongs.example/ytbridge.py",
-  "bridgeCoreSha256": "8323c7a2a4c96cda2921e55aa5e976f677ac951e3f4001390b908a3ac6a57ed1",
-  "bridgeCoreSizeBytes": 107044,
-  "notes": "The setup is clear of the status and navigation bars, opens the app settings page first so 'Allow restricted settings' can unlock notification access, and shows the format you actually chose instead of falling back to M4A.",
+  "bridgeCoreSha256": "8e0bd92a61ccd8090f691ab6d0991010a6c4e9e035dafecc94dab2f3149f8803",
+  "bridgeCoreSizeBytes": 116971,
+  "notes": "The setup is clear of the status and navigation bars, opens the app settings page first so 'Allow restricted settings' can unlock notification access, and shows the format you actually chose. The bridge can now keep a fixed address, so the same eight-character code pairs it from any network, and still works after a restart.",
   "published": "2026-11-09T02:07:58Z",
   "hosts": [
     "https://autosongs.example"

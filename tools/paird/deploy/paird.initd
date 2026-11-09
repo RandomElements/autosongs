@@ -1,0 +1,13 @@
+#!/sbin/openrc-run
+# AutoSongs internet pairing: the eight-character lookup service.
+description="AutoSongs pairing service"
+command="/autosongs/paird/paird.linux-amd64"
+command_background=true
+pidfile="/run/paird.pid"
+output_log="/var/log/paird.log"
+error_log="/var/log/paird.log"
+
+depend() {
+    need net
+    after caddy
+}
